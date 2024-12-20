@@ -1,0 +1,73 @@
+Roadmap for the Project
+
+Phase 1: Setup and Configuration
+Initialize Angular Project:
+
+Set up TypeScript configurations and linting rules.
+Install necessary dependencies.
+Project Colors and Breakpoints:
+
+Define colors and breakpoints in a global CSS/SCSS file.
+Configure data-theme for light and dark themes and set CSS variables for each.
+
+Routing Setup:
+
+Create routes for Invoice List, Invoice Details, New Invoice, and Dashboard.
+State Management:
+
+Integrate state management (e.g., RxJS with services) to handle invoice data globally.
+
+Phase 2: Component Development
+Basic UI Components:
+
+Create and test the following components:
+Headline Component: Handle headline typography variants.
+Text Component: Implement text styles for body, captions, etc.
+Icon Component: Dynamically load icons based on inputs.
+Button Component: Render all button variants defined in the design system.
+Avatar Component: Make it interactive with click events.
+Badge Component: Display invoice statuses like Draft, Paid, Pending.
+Theme Toggle Component: Switch data-theme values.
+Advanced Components:
+
+Filter Component:
+Accept a list of options with title and value.
+Support multi-select functionality.
+Invoice Card Component:
+Build a responsive card that navigates to invoice details using RouterLink.
+Dialogs and Drawers:
+
+Dialog Component:
+Create a transparent overlay that can display child content.
+Side Drawer:
+Implement the side-drawer for New Invoice and Edit Invoice.
+
+Phase 3: Dashboard and Pages
+Dashboard Interface:
+
+Design a reusable layout with:
+Navigation Bar
+Page Header
+Content Slot
+Ensure responsiveness using CSS breakpoints.
+Empty Page:
+
+Create an empty state for the invoice list page with a "No Invoices" message.
+Invoice List Page:
+
+Use dummy data to render a list of invoices.
+View Invoice Page:
+
+Display invoice details with a disabled "Mark as Paid" button for draft invoices.
+Add a real-time status update for pending invoices.
+
+Phase 4: Invoice Operations
+Invoice Filtering:
+
+Leverage the Filter Component to filter invoices by status and other criteria.
+Invoice Deletion:
+
+Implement deletion functionality and navigate back to the invoice list page.
+Invoice Creation and Editing:
+
+Enable the side-drawer for New Invoice creation and editing.
