@@ -17,6 +17,11 @@
   --breakpoint-desktop: 1440px;
 }
 
+@font-face {
+  font-family: 'Spartan';
+  src: url('/font/LeagueSpartan-VariableFont_wght.ttf') format('truetype');
+}
+
 * {
   margin: 0;
   padding: 0;
