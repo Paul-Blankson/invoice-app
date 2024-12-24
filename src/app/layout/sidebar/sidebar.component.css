@@ -1,6 +1,6 @@
 .sidebar {
   width: 100vw;
-  background-color: var(--color-primary-red);
+  background-color: var(--color-steel-gray);
 }
 
 @media screen and (min-width: var(--breakpoint-desktop)) {
