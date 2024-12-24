@@ -1,6 +1,6 @@
 .main {
   height: calc(100vh - 72px);
-  background-color: var(--color-almost-white);
+  background-color: var(--background-color);
 }
 
 @media screen and (min-width: var(--breakpoint-desktop)) {
