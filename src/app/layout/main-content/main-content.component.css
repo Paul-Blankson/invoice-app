@@ -1,0 +1,11 @@
+.main {
+  height: calc(100vh - 72px);
+  background-color: var(--color-almost-white);
+}
+
+@media screen and (min-width: var(--breakpoint-desktop)) {
+  .main {
+    width: calc(100vw - 103px);
+    height: 100vh;
+  }
+}
