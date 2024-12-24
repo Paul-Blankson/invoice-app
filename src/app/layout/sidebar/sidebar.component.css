@@ -1,0 +1,11 @@
+.sidebar {
+  width: 100vw;
+  background-color: var(--color-primary-red);
+}
+
+@media screen and (min-width: var(--breakpoint-desktop)) {
+  .sidebar {
+    width: 103px;
+    height: 100vh;
+  }
+}
