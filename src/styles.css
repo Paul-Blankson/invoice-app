@@ -11,6 +11,7 @@
   --color-secondary-red: #ff9797;
   --color-almost-white: #f8f8fb;
   --color-midnight-gray: #141625;
+  ----color-steel-gray: #373B53;
 
   /* Breakpoints */
   --breakpoint-tablet: 768px;
@@ -19,7 +20,7 @@
 
 @font-face {
   font-family: 'Spartan';
-  src: url('/font/LeagueSpartan-VariableFont_wght.ttf') format('truetype');
+  src: url('../public/fonts/LeagueSpartan-VariableFont_wght.ttf') format('truetype');
 }
 
 * {
