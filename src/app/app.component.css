@@ -4,9 +4,30 @@
   gap: 0px 0px;
 }
 
-@media screen and (min-width: var(--breakpoint-desktop)) {
+.sidebar {
+  width: 100vw;
+  background-color: var(--color-steel-gray);
+}
+
+.main {
+  height: calc(100vh - 72px);
+  background-color: var(--color-almost-white);
+}
+
+@media screen and (min-width: 1440px) {
   .container {
     grid-template-columns: 103px 1fr;
     grid-template-rows: 1fr;
   }
+
+  .sidebar {
+    width: 103px;
+    height: 100vh;
+    border-radius: 0px 20px 20px 0px;
+  }
+  .main {
+    width: calc(100vw - 103px);
+    height: 100vh;
+  }
 }
+
