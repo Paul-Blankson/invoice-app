@@ -1,1 +1,11 @@
-<p>text works!</p>
+@switch (variant) {
+  @case ('small') {
+    <p class="small"><ng-content select="[small]"></ng-content></p>
+  }
+  @case ('large') {
+    <p class="large"><ng-content select="[large]"></ng-content></p>
+  }
+  @default {
+    <p class="large"><ng-content select="[large]"></ng-content></p>
+  }
+}
