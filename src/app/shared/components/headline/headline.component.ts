@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
-import { HeadingLevel, HeadingVariant } from '../../models';
+import { HeadingLevel, TextVariant } from '../../models';
 
 @Component({
   selector: 'app-headline',
@@ -11,5 +11,5 @@ import { HeadingLevel, HeadingVariant } from '../../models';
 })
 export class HeadlineComponent {
   @Input() level: HeadingLevel = 'h3';
-  @Input() variant: HeadingVariant = 'large';
+  @Input() variant: TextVariant = 'large';
 }
