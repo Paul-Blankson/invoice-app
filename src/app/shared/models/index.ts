@@ -7,7 +7,7 @@ export type IconName =
   | 'icon-arrow-down'
   | 'icon-arrow-left'
   | 'icon-arrow-right'
-  | 'icon-calender'
+  | 'icon-calendar'
   | 'icon-check'
   | 'icon-delete'
   | 'icon-plus'
