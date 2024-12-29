@@ -1,0 +1,78 @@
+:host {
+  display: inline-block;
+}
+
+.icon-moon, .icon-sun {
+  width: 20px;
+  height: 20px;
+}
+
+.icon-arrow-down, .icon-arrow-left, .icon-arrow-right {
+  width: 8.46px;
+  height: 4.23px;
+}
+
+.icon-calendar {
+  width: 16px;
+  height: 16px;
+}
+
+.icon-check {
+  width: 10px;
+  height: 8px;
+}
+
+.icon-delete {
+  width: 10.67px;
+  height: 12.44px;
+}
+
+.icon-plus {
+  width: 10px;
+  height: 10px;
+}
+
+.image-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+}
+
+.illustration-empty {
+  width: 193.07px;
+  height: 160px;
+}
+
+.logo {
+  width: 28px ;
+  height: 27.58px;
+}
+
+@media screen and (min-width: 768px) {
+  .illustration-empty {
+    width: 241.34px;
+    height: 200px ;
+  }
+
+  .logo {
+    width: 31px ;
+    height: 30.76px ;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .illustration-empty {
+    width: 241.34px;
+    height: 200px;
+  }
+
+  .logo {
+    width: 40px ;
+    height: 40px;
+  }
+
+  .image-avatar {
+    width: 40px;
+    height: 40px;
+  }
+}
