@@ -1,0 +1,5 @@
+@if (isImageAvatar) {
+  <img [src]="assetPath" [alt]="name" class="avatar" />
+} @else {
+  <img [src]="assetPath" [alt]="name" [class]="variant" />
+}

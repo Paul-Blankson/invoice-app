@@ -1,0 +1,33 @@
+.layout {
+  display: grid;
+  grid-template-rows: 72px 1fr;
+  gap: 0px 0px;
+}
+
+.layout__sidebar {
+  width: 100vw;
+  background-color: var(--color-steel-gray);
+}
+
+.layout__main {
+  height: calc(100vh - 72px);
+  background-color: var(--color-almost-white);
+}
+
+@media screen and (min-width: 1440px) {
+  .layout {
+    grid-template-columns: 103px 1fr;
+    grid-template-rows: 1fr;
+  }
+
+  .layout__sidebar {
+    width: 103px;
+    height: 100vh;
+    border-radius: 0px 20px 20px 0px;
+  }
+
+  .layout__main {
+    width: calc(100vw - 103px);
+    height: 100vh;
+  }
+}
