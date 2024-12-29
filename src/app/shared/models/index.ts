@@ -14,3 +14,4 @@ export type IconName =
   | 'illustration-empty'
   | 'image-avatar'
   | 'logo';
+export type BadgeVariant = 'pending' | 'paid' | 'draft';
