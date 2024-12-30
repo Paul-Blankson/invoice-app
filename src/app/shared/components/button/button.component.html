@@ -1,0 +1,10 @@
+<button [class]="buttonClass">
+  @if (btnVariant === 'btn1') {
+    <div class="btn1__icon-container">
+      <app-icon name="icon-plus"></app-icon>
+    </div>
+  }
+  <app-headline level="h3" variant="small">
+    <ng-container h3>{{ getButtonText() }}</ng-container>
+  </app-headline>
+</button>
