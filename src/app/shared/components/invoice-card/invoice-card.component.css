@@ -1,0 +1,91 @@
+
+.small__screen {
+  display: flex !important;
+}
+
+.large__screen {
+  display: none !important;
+}
+
+.invoice__card-container {
+  max-width: 327px;
+  height: 134px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 1.5rem;
+  border-radius: 8px;
+  background-color: var(--white-color);
+  box-shadow: 0px 10px 10px -10px #48549F1A;
+}
+
+.invoice__header-text-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.invoice__card-body {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+/* Tablet and above */
+@media screen and (min-width: 768px) {
+  .small__screen {
+    display: none !important;
+  }
+
+  .large__screen {
+    display: flex !important;
+  }
+
+  .invoice__card-container {
+    max-width: 672px;
+    height: 72px;
+    flex-direction: row;
+    align-items: center;
+    gap: 5rem;
+    padding: 0px 32px;
+  }
+
+  .invoice__card-text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 43px;
+  }
+
+  .invoice__card-details {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+  }
+
+  .invoice__card-details-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+  }
+}
+
+/* Desktop */
+@media screen and (min-width: 1024px) {
+  .small__screen {
+    display: none !important;
+  }
+
+  .large__screen {
+    display: flex !important;
+  }
+
+  .invoice__card-container {
+    max-width: 730px;
+    height: 72px;
+  }
+}
