@@ -1,0 +1,72 @@
+.invoice__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  max-width: 327px;
+  height: 44px;
+}
+
+.invoice__header-text-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.invoice__header-controls-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.125rem;
+}
+
+.invoice__list {
+  margin-top: 32px;
+}
+
+.large__screens {
+  display: none;
+}
+
+.mobile {
+  display: block;
+}
+
+@media screen and (min-width: 768px) {
+  .invoice__header {
+    max-width: 672px;
+    height: 59px;
+  }
+
+  .invoice__header-controls-container {
+    gap: 2.5rem;
+  }
+
+  .invoice__list {
+    margin-top: 3.5rem;
+  }
+
+  .large__screens {
+    display: block;
+  }
+
+  .mobile {
+    display: none;
+  }
+
+}
+
+@media screen and (min-width: 1024px) {
+  .invoice__header {
+    max-width: 730px;
+    height: 59px;
+  }
+
+  .invoice__header-controls-container {
+    gap: 2.5rem;
+  }
+
+  .invoice__list {
+    margin-top: 4.5rem;
+  }
+
+}
