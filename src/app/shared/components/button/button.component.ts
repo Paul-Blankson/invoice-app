@@ -12,7 +12,6 @@ import { HeadlineComponent } from "../headline/headline.component";
 export class ButtonComponent {
   @Input() btnVariant: ButtonVariant = 'btn1';
   @Input() text: string = '';
-  @Input() class: string = '';
 
   get buttonClass(): string {
     return this.btnVariant;
