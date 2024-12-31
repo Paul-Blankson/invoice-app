@@ -1,1 +1,24 @@
-<p>invoice-list works!</p>
+<div class="invoice__header">
+  <div class="invoice__header-text-container">
+    <app-headline level="h1" class="large__screens">
+      <ng-container h1>Invoices</ng-container>
+    </app-headline>
+    <app-headline level="h2" class="mobile">
+      <ng-container h2>Invoices</ng-container>
+    </app-headline>
+    <app-text variant="large" class="mobile">
+      <ng-container large>7 invoices</ng-container>
+    </app-text>
+    <app-text variant="large" class="large__screens">
+      <ng-container large>There are 7 total invoices</ng-container>
+    </app-text>
+  </div>
+  <div class="invoice__header-controls-container">
+    <app-filter label="Filter" />
+    <app-button btnVariant="btn1" text="New" class="mobile"/>
+    <app-button btnVariant="btn1" text="New Invoice" class="large__screens" />
+  </div>
+</div>
+<div class="invoice__list">
+  <app-invoice-card />
+</div>
