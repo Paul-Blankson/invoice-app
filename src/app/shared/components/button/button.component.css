@@ -13,7 +13,7 @@ button {
   color: var(--white-color);
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 12px;
 }
 
 .btn1:hover {
