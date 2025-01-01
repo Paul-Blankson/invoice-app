@@ -1,0 +1,28 @@
+<div class="filter">
+  <div class="filter__header">
+    <app-headline level="h3" variant="small">
+      <ng-container h3>{{ label }}</ng-container>
+    </app-headline>
+    <button class="filter__header-button" (click)="toggleFilter()">
+      <app-icon [name]="isOpen ? 'icon-arrow-up' : 'icon-arrow-down'" />
+    </button>
+  </div>
+  @if (isOpen) {
+    <div class="filter__content">
+      @for (option of options; track option.value) {
+        <label class="filter__option">
+          <input
+            type="checkbox"
+            class="filter__option-input"
+            [value]="option.value"
+            [checked]="isSelected(option.value)"
+            (change)="toggleOption(option.value)"
+          />
+          <app-headline level="h3" variant="small">
+            <ng-container h3>{{ option.title }}</ng-container>
+          </app-headline>
+        </label>
+      }
+    </div>
+  }
+</div>
