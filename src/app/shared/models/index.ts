@@ -1,5 +1,5 @@
 export type HeadingLevel = 'h1' | 'h2' | 'h3' | 'h3-sm';
-export type TextVariant = 'large' | 'small';
+export type TextVariant = 'p' | 'span' | 'label';
 export type IconName =
   | 'icon-sun'
   | 'icon-moon'
