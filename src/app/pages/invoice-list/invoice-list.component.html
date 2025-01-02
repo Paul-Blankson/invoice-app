@@ -7,10 +7,10 @@
       <ng-container h2>Invoices</ng-container>
     </app-headline>
     <app-text variant="large" class="mobile">
-      <ng-container large>7 invoices</ng-container>
+      <ng-container large>{{ invoiceCount$ | async }} invoices</ng-container>
     </app-text>
     <app-text variant="large" class="large__screens">
-      <ng-container large>There are 7 total invoices</ng-container>
+      <ng-container large>There are {{ invoiceCount$ | async }} invoices</ng-container>
     </app-text>
   </div>
   <div class="invoice__header-controls-container">
@@ -19,6 +19,17 @@
     <app-button btnVariant="btn1" text="New Invoice" class="large__screens" />
   </div>
 </div>
+@if (loading$ | async) {
 <div class="invoice__list">
-  <app-invoice-card />
+  <app-headline level="h2">
+    <ng-container h2>Loading invoices...</ng-container>
+  </app-headline>
 </div>
+}
+@else {
+<div class="invoice__list">
+  @for (invoice of invoices$ | async; track invoice.id) {
+  <app-invoice-card />
+}
+</div>
+}
