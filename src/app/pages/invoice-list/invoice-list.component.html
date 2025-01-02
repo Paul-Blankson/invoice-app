@@ -1,11 +1,7 @@
 <div class="invoice__header">
   <div class="invoice__header-text-container">
-    <app-headline level="h1" class="large__screens">
-      <ng-container h1>Invoices</ng-container>
-    </app-headline>
-    <app-headline level="h2" class="mobile">
-      <ng-container h2>Invoices</ng-container>
-    </app-headline>
+    <app-headline level="h1" text="Invoices" className="" class="large__screens"/>
+    <app-headline level="h1" text="Invoices" className="" class="mobile"/>
     <app-text variant="large" class="mobile">
       <ng-container large>{{ invoiceCount$ | async }} invoices</ng-container>
     </app-text>
@@ -21,9 +17,7 @@
 </div>
 @if (loading$ | async) {
 <div class="invoice__list">
-  <app-headline level="h2">
-    <ng-container h2>Loading invoices...</ng-container>
-  </app-headline>
+  <app-headline level="h2" text="Loading invoices..." className="" class="mobile"/>
 </div>
 }
 @else {

@@ -4,7 +4,5 @@
       <app-icon name="icon-plus"></app-icon>
     </div>
   }
-  <app-headline level="h3" variant="small">
-    <ng-container h3>{{ getButtonText() }}</ng-container>
-  </app-headline>
+  <app-headline level="h3-sm" [text]="getButtonText()" />
 </button>

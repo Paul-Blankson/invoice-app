@@ -1,8 +1,6 @@
 <div class="filter">
   <div class="filter__header">
-    <app-headline level="h3" variant="small">
-      <ng-container h3>{{ label }}</ng-container>
-    </app-headline>
+    <app-headline level="h3-sm" [text]="label" className=""/>
     <button class="filter__header-button" (click)="toggleFilter()">
       <app-icon [name]="isOpen ? 'icon-arrow-up' : 'icon-arrow-down'" />
     </button>
@@ -18,9 +16,7 @@
             [checked]="isSelected(option.value)"
             (change)="toggleOption(option.value)"
           />
-          <app-headline level="h3" variant="small">
-            <ng-container h3>{{ option.title }}</ng-container>
-          </app-headline>
+          <app-headline level="h3-sm" [text]="option.title" className=""/>
         </label>
       }
     </div>
