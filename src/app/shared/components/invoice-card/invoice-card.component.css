@@ -32,6 +32,11 @@
   width: 100%;
 }
 
+.invoice__header-id-container {
+  display: flex;
+  align-items: center;
+}
+
 .invoice__card-body {
   display: flex;
   justify-content: space-between;

@@ -1,13 +1,21 @@
 <div class="invoice__header">
   <div class="invoice__header-text-container">
-    <app-headline level="h1" text="Invoices" className="" class="large__screens"/>
-    <app-headline level="h1" text="Invoices" className="" class="mobile"/>
-    <app-text variant="large" class="mobile">
-      <ng-container large>{{ invoiceCount$ | async }} invoices</ng-container>
-    </app-text>
-    <app-text variant="large" class="large__screens">
-      <ng-container large>There are {{ invoiceCount$ | async }} invoices</ng-container>
-    </app-text>
+    <app-headline level="h1" text="Invoices" class="large__screens"/>
+    <app-headline level="h1" text="Invoices" class="mobile"/>
+    @if (invoiceCount$ | async; as count) {
+      <app-text
+        variant="p"
+        [text]="count + ' invoices'"
+        className="large muted-blue"
+        class="mobile"
+      />
+      <app-text
+        variant="p"
+        [text]="'There are ' + count + ' invoices'"
+        className="large muted-blue"
+        class="large__screens"
+      />
+    }
   </div>
   <div class="invoice__header-controls-container">
     <app-filter label="Filter" />

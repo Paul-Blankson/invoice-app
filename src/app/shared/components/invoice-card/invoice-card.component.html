@@ -1,13 +1,14 @@
 <a class="invoice__card-container small__screen">
   <div class="invoice__header-text-container">
-    <app-headline level="h3-sm" text="#RT3080" className="" />
-    <app-headline level="h3" text="Jensen Huang" className="" />
+    <div class="invoice__header-id-container">
+    <app-headline level="h3-sm" text="#" className="large soft-blue" />
+    <app-headline level="h3-sm" text="RT3080" className="large" />
+  </div>
+    <app-text variant="span" text="Jensen Huang" className="large slate-blue" />
   </div>
   <div class="invoice__card-body">
     <div class="invoice__card-details">
-      <app-text variant="large">
-        <ng-container large>Due 19 Jan 2021</ng-container>
-      </app-text>
+      <app-text variant="span" text="Due 19 Jan 2021" className="large muted-blue" />
       <app-headline level="h3" text="£ 1,800.90" className="" />
     </div>
     <app-badge variant="paid">
@@ -17,15 +18,14 @@
 </a>
 
 <a class="invoice__card-container small__screen large__screen">
-  <app-headline level="h3-sm" text="#RT3080" className="" />
+  <div class="invoice__header-id-container">
+    <app-headline level="h3-sm" text="#" className="large soft-blue" />
+    <app-headline level="h3-sm" text="RT3080" className="large" />
+  </div>
 
-  <app-text variant="large">
-    <ng-container large>Due 19 Jan 2021</ng-container>
-  </app-text>
+  <app-text variant="span" text="Due 19 Jan 2021" className="large muted-blue" />
 
-  <app-text variant="large">
-    <ng-container large>Jensen Huang</ng-container>
-  </app-text>
+  <app-text variant="span" text="Jensen Huang" className="large slate-blue" />
 
   <app-headline level="h3" text="£ 1,800.90" className="" />
   <div class="invoice__card-details-controls">
