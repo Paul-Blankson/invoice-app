@@ -18,7 +18,7 @@ import { HeadingLevel } from '../../models';
         font-family: 'Spartan', sans-serif;
         font-weight: 700;
         margin: 0;
-        color: var(--color-light-gray);
+        color: var(--color-very-dark);
       }
       .h1 {
         font-size: 2rem;
@@ -48,6 +48,21 @@ import { HeadingLevel } from '../../models';
       }
       .muted-blue {
         color: var(--color-muted-blue);
+      }
+      .slate-blue {
+        color: var(--color-slate-blue);
+      }
+      .white-color {
+        color: var(--white-color);
+      }
+      .pending {
+        color: var(--color-amber);
+      }
+      .paid {
+         color: var(--color-mint-green);
+      }
+      .draft {
+        color: var(--color-steel-gray);
       }
 
     `,
