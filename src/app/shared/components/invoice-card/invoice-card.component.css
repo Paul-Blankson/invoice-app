@@ -18,6 +18,7 @@
   background-color: var(--white-color);
   box-shadow: 0px 10px 10px -10px #48549F1A;
   margin-bottom: 16px;
+  text-decoration: none;
 }
 
 .invoice__card-container:hover {
