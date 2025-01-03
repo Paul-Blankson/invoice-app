@@ -1,5 +1,14 @@
 <div class="layout">
-  <header class="layout__sidebar"></header>
+  <header class="layout__sidebar">
+    <div class="sidebar__logo-container">
+      <app-icon name="logo" />
+    </div>
+    <div class="sidebar__controls-container">
+      <app-icon name="icon-moon" />
+      <hr class="sidebar__controls-separator" />
+      <app-icon name="image-avatar" />
+    </div>
+  </header>
   <main class="layout__main">
     <router-outlet />
   </main>

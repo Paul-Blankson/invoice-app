@@ -14,21 +14,25 @@
   --color-deep-gray: #252945;
   --color-light-gray: #dfe3fa;
   --color-muted-blue: #888eb0;
+  --color-slate-blue: #858BB2;
   --color-soft-blue: #7e88c3;
   --color-very-dark: #0c0e16;
   --color-steel-gray: #373B53;
+  --color-grayish-blue: #494E6E;
   --color-almost-white: #f8f8fb;
   --color-midnight-gray: #141625;
   --white-color: #ffffff;
+  --color-pale-blue-white: #F9FAFE;
 }
 
 [data-theme="light"] {
   --background-color: var(--color-almost-white);
-  --text-color: var(--color-very-dark);
+  --headline-text-color: var(--color-very-dark);
 }
 
 [data-theme="dark"] {
   --background-color: var(--color-midnight-gray);
+  --headline-text-color: var(--white-color);
   --text-color: var(--color-light-gray);
 }
 
@@ -45,6 +49,7 @@
 
 body {
   font-family: 'Spartan', sans-serif;
-  background-color: var(--background-color);
+  background-color: var(--color-almost-white);
   color: var(--text-color);
+  min-height: 100dvh;
 }
