@@ -12,7 +12,7 @@ export const InvoiceActions = createActionGroup({
     'Load Invoice By Id Success': props<{ invoice: Invoice }>(),
     'Load Invoice By Id Failure': props<{ error: string }>(),
 
-    'Set Filter Status': props<{ status: 'draft' | 'pending' | 'paid' | null }>(),
+    'Set Filter Status': props<{ statuses: ('draft' | 'pending' | 'paid')[] }>(),
 
     'Create Invoice': props<{ invoice: Invoice }>(),
     'Create Invoice Success': props<{ invoice: Invoice }>(),
