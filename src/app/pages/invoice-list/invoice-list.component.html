@@ -1,7 +1,7 @@
 <div class="invoice__header">
   <div class="invoice__header-text-container">
-    <app-headline level="h1" text="Invoices" class="large__screens"/>
-    <app-headline level="h1" text="Invoices" class="mobile"/>
+    <app-headline level="h1" text="Invoices" class="large__screens" />
+    <app-headline level="h1" text="Invoices" class="mobile" />
     @if (invoiceCount$ | async; as count) {
       <app-text
         variant="p"
@@ -18,20 +18,36 @@
     }
   </div>
   <div class="invoice__header-controls-container">
-    <app-filter label="Filter" />
-    <app-button btnVariant="btn1" text="New" class="mobile"/>
+    <app-filter
+      [options]="filterOptions"
+      label="Filter by status"
+      [selectedStatuses]="(filterStatuses$ | async) || []"
+      (selectionChange)="onFilterChange($event)"
+    />
+    <app-button btnVariant="btn1" text="New" class="mobile" />
     <app-button btnVariant="btn1" text="New Invoice" class="large__screens" />
   </div>
 </div>
 @if (loading$ | async) {
-<div class="invoice__list">
-  <app-headline level="h2" text="Loading invoices..." className="" class="mobile"/>
-</div>
-}
-@else {
-<div class="invoice__list">
-  @for (invoice of invoices$ | async; track invoice.id) {
-  <app-invoice-card />
-}
-</div>
+  <div class="invoice__list">
+    <app-headline
+      level="h2"
+      text="Loading invoices..."
+      class="mobile"
+    />
+  </div>
+} @else {
+  <div class="invoice__list">
+    @if ((filteredInvoices$ | async)?.length === 0) {
+      <app-headline
+        level="h2"
+        text="No invoices found"
+        class="mobile"
+      />
+    } @else {
+      @for (invoice of filteredInvoices$ | async; track invoice.id) {
+        <app-invoice-card [invoice]="invoice" />
+      }
+    }
+  </div>
 }
