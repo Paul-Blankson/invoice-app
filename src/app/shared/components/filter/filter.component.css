@@ -3,17 +3,14 @@
   position: relative;
 }
 
-.filter__header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 8px;
-}
-
 .filter__header-button {
   background-color: transparent;
   border: none;
   cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
 }
 
 .filter__content {

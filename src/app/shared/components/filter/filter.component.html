@@ -1,14 +1,13 @@
 <div class="filter">
-  <div class="filter__header">
-    <app-headline level="h3-sm" [text]="label" className=""/>
     <button class="filter__header-button" (click)="toggleFilter()">
+      <app-headline level="h3-sm" [text]="label" className=""/>
       <app-icon [name]="isOpen ? 'icon-arrow-up' : 'icon-arrow-down'" />
     </button>
-  </div>
+
   @if (isOpen) {
     <div class="filter__content">
       @for (option of options; track option.value) {
-        <label class="filter__option">
+          <app-text variant="label" class="filter__option">
           <input
             type="checkbox"
             class="filter__option-input"
@@ -17,7 +16,7 @@
             (change)="toggleOption(option.value)"
           />
           <app-headline level="h3-sm" [text]="option.title" className=""/>
-        </label>
+        </app-text>
       }
     </div>
   }
