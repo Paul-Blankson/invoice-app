@@ -56,6 +56,7 @@
   }
 
   .invoice__card-container {
+    max-width: 672px;
     height: 72px;
     flex-direction: row;
     align-items: center;
@@ -93,6 +94,8 @@
   }
 
   .invoice__card-container {
+    max-width: 100%;
+    min-width: 730px;
     height: 72px;
     gap: 5rem;
   }
