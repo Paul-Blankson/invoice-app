@@ -1,37 +1,41 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { FilterOption } from '../../models';
-import { HeadlineComponent } from "../headline/headline.component";
-import { IconComponent } from "../icon/icon.component";
+import { BadgeVariant, FilterOption } from '../../models';
+import { HeadlineComponent } from '../headline/headline.component';
+import { IconComponent } from '../icon/icon.component';
 
 @Component({
   selector: 'app-filter',
   imports: [HeadlineComponent, IconComponent],
   templateUrl: './filter.component.html',
-  styleUrl: './filter.component.css'
+  styleUrl: './filter.component.css',
 })
 export class FilterComponent {
   @Input() options: FilterOption[] = [];
   @Input() label: string = 'Filter';
-  @Output() selectionChange = new EventEmitter<string[]>();
+  @Input() selectedStatuses: BadgeVariant[] = [];
+  @Output() selectionChange = new EventEmitter<BadgeVariant[]>();
 
   isOpen = false;
-  selectedValues: string[] = [];
 
   toggleFilter(): void {
     this.isOpen = !this.isOpen;
   }
 
   isSelected(value: string): boolean {
-    return this.selectedValues.includes(value);
+    return this.selectedStatuses.includes(value as BadgeVariant);
   }
 
   toggleOption(value: string): void {
-    const index = this.selectedValues.indexOf(value);
+    const badgeValue = value as BadgeVariant;
+    const currentStatuses = [...this.selectedStatuses];
+    const index = currentStatuses.indexOf(badgeValue);
+
     if (index === -1) {
-      this.selectedValues.push(value);
+      currentStatuses.push(badgeValue);
     } else {
-      this.selectedValues.splice(index, 1);
+      currentStatuses.splice(index, 1);
     }
-    this.selectionChange.emit(this.selectedValues);
+
+    this.selectionChange.emit(currentStatuses);
   }
 }

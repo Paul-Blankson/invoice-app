@@ -36,9 +36,9 @@ export const invoiceFeature = createFeature({
       loading: false,
       error
     })),
-    on(InvoiceActions.setFilterStatus, (state, { status }) => ({
+    on(InvoiceActions.setFilterStatus, (state, { statuses }) => ({
       ...state,
-      filterStatus: status
+      filterStatuses: statuses
     })),
     on(InvoiceActions.createInvoiceSuccess, (state, { invoice }) => ({
       ...state,
@@ -63,7 +63,7 @@ export const {
   selectInvoiceState,
   selectInvoices,
   selectSelectedInvoice,
-  selectFilterStatus,
+  selectFilterStatuses,
   selectLoading,
   selectError
 } = invoiceFeature;

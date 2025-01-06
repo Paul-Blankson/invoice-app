@@ -1,3 +1,4 @@
+import { BadgeVariant } from '../shared/models';
 import { Invoice } from './services.type';
 
 export interface AppState {
@@ -8,7 +9,7 @@ export interface AppState {
 export interface InvoiceState {
   invoices: Invoice[];
   selectedInvoice: Invoice | null;
-  filterStatus: 'draft' | 'pending' | 'paid' | null;
+  filterStatuses: BadgeVariant[];
   loading: boolean;
   error: string | null;
 }
@@ -20,7 +21,7 @@ export interface ThemeState {
 export const initialInvoiceState: InvoiceState = {
   invoices: [],
   selectedInvoice: null,
-  filterStatus: null,
+  filterStatuses: [],
   loading: false,
   error: null
 };
