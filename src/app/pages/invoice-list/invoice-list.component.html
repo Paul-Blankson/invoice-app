@@ -1,3 +1,4 @@
+<div class="invoice__list-container">
 <div class="invoice__header">
   <div class="invoice__header-text-container">
     <app-headline level="h1" text="Invoices" class="large__screens" />
@@ -28,7 +29,6 @@
     <app-button btnVariant="btn1" text="New" class="mobile" />
     <app-button btnVariant="btn1" text="New Invoice" class="large__screens" />
   </div>
-  
 </div>
 @if (loading$ | async) {
   <div class="invoice__list">
@@ -69,3 +69,4 @@
   }
   </div>
 }
+</div>
