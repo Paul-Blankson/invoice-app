@@ -1,1 +1,206 @@
-<p>invoice-details works!</p>
+<div class="invoice__details-container">
+  <button
+    class="invoice__details-go-back"
+    (click)="goBack()"
+    (keydown.enter)="goBack()"
+    type="button"
+  >
+    <app-icon name="icon-arrow-left"></app-icon>
+    <app-headline text="Go back" className="h3-sm" />
+  </button>
+
+  @if (invoice$ | async; as invoiceDetail) {
+    <div class="invoice__details-status small__screen">
+      <app-text text="Status" variant="p" className="slate-blue" />
+      <app-badge [variant]="invoiceDetail.status" />
+    </div>
+
+    <div class="invoice__details-status large__screen">
+      <div class="invoice__details-status__container">
+        <app-text text="Status" variant="p" className="slate-blue" />
+        <app-badge [variant]="invoiceDetail.status" />
+      </div>
+      <div class="invoice__details-btn-controls">
+        <app-button btnVariant="btn3" textColor="soft-blue" />
+        <app-button btnVariant="btn5" />
+        <app-button btnVariant="btn2" />
+      </div>
+    </div>
+
+    <div class="invoice__details-card">
+      <div class="invoice__details-card-address">
+        <div class="invoice__details-name">
+          <div class="invoice__details-id">
+            <app-headline text="#" level="h3-sm" className="soft-blue" />
+            <app-headline [text]="invoiceDetail.id" level="h3-sm" />
+          </div>
+          <app-text
+            [text]="invoiceDetail.description"
+            variant="p"
+            className="large soft-blue"
+          />
+        </div>
+
+        <app-text
+          [text]="
+            [
+              invoiceDetail.senderAddress.street,
+              invoiceDetail.senderAddress.city,
+              invoiceDetail.senderAddress.postCode,
+              invoiceDetail.senderAddress.country,
+            ] | join: ' '
+          "
+          variant="p"
+          className="small soft-blue text-left"
+          class="reduce-width"
+        />
+      </div>
+
+      <div class="invoice__details-card-billing">
+        <div class="invoice__details-bill-date-container">
+          <div class="invoice__details-bill-date">
+            <app-text
+              text="Invoice Date"
+              variant="p"
+              className="large soft-blue"
+            />
+            <app-headline
+              [text]="(invoiceDetail.createdAt | date: 'dd MMM yyy')!"
+              level="h3"
+            />
+          </div>
+          <div class="invoice__details-payment-due">
+            <app-text
+              text="Payment Due"
+              variant="p"
+              className="large soft-blue"
+            />
+            <app-headline
+              [text]="(invoiceDetail.paymentDue | date: 'dd MMM yyy')!"
+              level="h3"
+            />
+          </div>
+        </div>
+
+        <div class="invoice__details-bill-to-container">
+          <app-text text="Bill To" variant="p" className="large soft-blue" />
+          <div class="invoice__details-bill-to-text">
+            <app-headline [text]="invoiceDetail.clientName" level="h3" />
+            <app-text
+              [text]="
+                [
+                  invoiceDetail.clientAddress.street,
+                  invoiceDetail.clientAddress.city,
+                  invoiceDetail.clientAddress.postCode,
+                  invoiceDetail.clientAddress.country,
+                ] | join: ' '
+              "
+              variant="p"
+              className="small soft-blue text-left"
+            />
+          </div>
+        </div>
+
+        <div class="invoice__details-sent-to-email">
+          <app-text text="Sent to" variant="p" className="large soft-blue" />
+          <app-headline [text]="invoiceDetail.clientEmail" level="h3" />
+        </div>
+      </div>
+
+      <div class="invoice__details-price-container">
+        <div class="invoice__details-price-items">
+          <div class="invoice__details-item-row">
+            <app-text
+              text="Item Name"
+              variant="p"
+              className="small soft-blue"
+              class="header"
+            />
+            <app-text
+              text="QTY."
+              variant="p"
+              className="small soft-blue"
+              class="header qty"
+            />
+            <app-text
+              text="Price"
+              variant="p"
+              className="small soft-blue"
+              class="header price"
+            />
+            <app-text
+              text="Total"
+              variant="p"
+              className="small soft-blue"
+              class="header total"
+            />
+          </div>
+
+          @for (item of invoiceDetail.items; track item.name) {
+            <div class="invoice__details-item-row">
+              <app-headline [text]="item.name" level="h3" class="item-name" />
+              <app-headline
+                [text]="item.quantity.toString()"
+                level="h3"
+                className="large"
+                class="qty spacer"
+              />
+              <app-headline
+                [text]="
+                  (item.price | currency: 'GBP' : 'symbol' : '1.2-2')!.replace(
+                    '£',
+                    '£ '
+                  )
+                "
+                level="h3"
+                className="large soft-blue"
+                class="price"
+              />
+              <app-headline
+                [text]="
+                  (item.total | currency: 'GBP' : 'symbol' : '1.2-2')!.replace(
+                    '£',
+                    '£ '
+                  )
+                "
+                level="h3"
+                class="total"
+              />
+              <app-headline
+                [text]="
+                  item.quantity +
+                  ' x ' +
+                  (item.price | currency: 'GBP' : 'symbol' : '1.2-2')
+                "
+                level="h3"
+                className="large soft-blue"
+                class="price-breakdown"
+              />
+            </div>
+          }
+        </div>
+
+        <div class="invoice__details-grand-total">
+          <app-text
+            text="Grand Total"
+            variant="span"
+            className="small white-color"
+          />
+          <app-headline
+            [text]="
+              (invoiceDetail.total | currency: 'GBP' : 'symbol' : '1.2-2')!
+            "
+            level="h2"
+            className="white-color"
+          />
+        </div>
+      </div>
+    </div>
+  }
+</div>
+
+<div class="invoice__details-controls small__screen">
+  <app-button btnVariant="btn3" textColor="soft-blue" />
+  <app-button btnVariant="btn5" />
+  <app-button btnVariant="btn2" />
+</div>
