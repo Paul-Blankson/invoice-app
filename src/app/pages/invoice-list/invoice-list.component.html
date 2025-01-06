@@ -1,7 +1,7 @@
 <div class="invoice__header">
   <div class="invoice__header-text-container">
     <app-headline level="h1" text="Invoices" class="large__screens" />
-    <app-headline level="h1" text="Invoices" class="mobile" />
+    <app-headline level="h2" text="Invoices" class="mobile" />
     @if (invoiceCount$ | async; as count) {
       <app-text
         variant="p"
