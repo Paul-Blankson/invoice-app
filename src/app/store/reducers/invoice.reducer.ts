@@ -9,17 +9,20 @@ export const invoiceFeature = createFeature({
     on(InvoiceActions.loadInvoices, (state) => ({
       ...state,
       loading: true,
-      error: null
+      error: null,
+      selectedInvoice: null
     })),
     on(InvoiceActions.loadInvoicesSuccess, (state, { invoices }) => ({
       ...state,
       invoices,
-      loading: false
+      loading: false,
+      selectedInvoice: null
     })),
     on(InvoiceActions.loadInvoicesFailure, (state, { error }) => ({
       ...state,
       loading: false,
-      error
+      error,
+      selectedInvoice: null
     })),
     on(InvoiceActions.loadInvoiceById, (state) => ({
       ...state,
@@ -52,7 +55,8 @@ export const invoiceFeature = createFeature({
     })),
     on(InvoiceActions.deleteInvoiceSuccess, (state, { id }) => ({
       ...state,
-      invoices: state.invoices.filter(inv => inv.id !== id)
+      invoices: state.invoices.filter(inv => inv.id !== id),
+      selectedInvoice: null
     }))
   )
 });
