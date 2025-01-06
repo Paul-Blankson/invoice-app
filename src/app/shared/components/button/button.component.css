@@ -1,0 +1,85 @@
+button {
+  border: none;
+  cursor: pointer;
+  outline: none;
+  height: 48px;
+  border-radius: 1.5rem;
+  padding: 17px 23px 16px 24px;
+}
+
+.btn1 {
+  padding: 17px 9px 1rem 8px;
+  background-color: var(--color-primary-blue);
+  color: var(--white-color);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.btn1:hover {
+  background-color: var(--color-secondary-blue);
+  transition: background-color 0.3s ease-in-out;
+}
+
+.btn1__icon-container {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--white-color);
+  border-radius: 50%;
+}
+
+.btn2 {
+  padding: 17px 23px 16px 24px;
+  background-color: var(--color-primary-blue);
+  color: var(--white-color);
+}
+
+.btn2:hover {
+  background-color: var(--color-secondary-blue);
+  transition: background-color 0.3s ease-in-out;
+}
+
+.btn3 {
+  padding: 17px 23px 16px 24px;
+  background-color: var(--color-pale-blue-white);
+  color: var(--color-soft-blue);
+}
+
+.btn3:hover {
+  background-color: var(--color-light-gray);
+  transition: background-color 0.3s ease-in-out;
+}
+
+.btn4 {
+  background-color: var(--color-steel-gray);
+  color: var(--color-muted-blue);
+}
+
+.btn4:hover {
+  background-color: var(--color-very-dark);
+  transition: background-color 0.3s ease-in-out;
+}
+
+.btn5 {
+  background-color: var(--color-primary-red);
+  color: var(--white-color);
+}
+
+.btn5:hover {
+  background-color: var(--color-secondary-red);
+  transition: background-color 0.3s ease-in-out;
+}
+
+.btn6 {
+  background-color: var(--color-pale-blue-white);
+  color: var(--color-soft-blue);
+  padding: 17px 115px 16px 115px;
+}
+
+.btn6:hover {
+  background-color: var(--color-light-gray);
+  transition: background-color 0.3s ease-in-out;
+}
