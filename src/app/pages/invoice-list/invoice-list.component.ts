@@ -15,6 +15,7 @@ import {
 } from '../../store/reducers/invoice.reducer';
 import { InvoiceActions } from '../../store/actions/invoice.actions';
 import { BadgeVariant, FilterOption } from '../../shared/models';
+import { IconComponent } from "../../shared/components/icon/icon.component";
 
 @Component({
   selector: 'app-invoice-list',
@@ -25,7 +26,8 @@ import { BadgeVariant, FilterOption } from '../../shared/models';
     FilterComponent,
     ButtonComponent,
     InvoiceCardComponent,
-  ],
+    IconComponent
+],
   templateUrl: './invoice-list.component.html',
   styleUrl: './invoice-list.component.css',
 })

@@ -17,6 +17,7 @@
       />
     }
   </div>
+
   <div class="invoice__header-controls-container">
     <app-filter
       [options]="filterOptions"
@@ -27,27 +28,44 @@
     <app-button btnVariant="btn1" text="New" class="mobile" />
     <app-button btnVariant="btn1" text="New Invoice" class="large__screens" />
   </div>
+  
 </div>
 @if (loading$ | async) {
   <div class="invoice__list">
-    <app-headline
-      level="h2"
-      text="Loading invoices..."
-      class="mobile"
-    />
+    <app-headline level="h2" text="Loading invoices..." class="mobile" />
   </div>
 } @else {
   <div class="invoice__list">
-    @if ((filteredInvoices$ | async)?.length === 0) {
+    @for (invoice of filteredInvoices$ | async; track invoice.id) {
+      <app-invoice-card [invoice]="invoice" />
+    }
+    @empty {
+    <div class="invoice__empty">
+      <app-icon name="illustration-empty" class="invoice__empty-icon" />
       <app-headline
         level="h2"
-        text="No invoices found"
-        class="mobile"
+        text="There is nothing here"
+        class="invoice__empty-headline"
       />
-    } @else {
-      @for (invoice of filteredInvoices$ | async; track invoice.id) {
-        <app-invoice-card [invoice]="invoice" />
-      }
-    }
+      <app-text
+        variant="p"
+        text="Create an invoice by clicking the "
+        className="muted-blue"
+        class="invoice__empty-text"
+      />
+      <div class="invoice__empty-inline-text">
+        <app-text
+          variant="span"
+          text="New button"
+          className="muted-blue bold"
+        />
+        <app-text
+          variant="span"
+          text=" and get started"
+          className="muted-blue"
+        />
+      </div>
+    </div>
+  }
   </div>
 }
