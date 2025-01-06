@@ -46,6 +46,15 @@ import { TextVariant } from '../../models';
       .white-text {
         color: var(--white-color);
       }
+      .text-right {
+        text-align: right;
+      }
+      .text-center {
+        text-align: center;
+      }
+      .text-left {
+        text-align: left;
+      }
     `,
   ],
   standalone: true,
