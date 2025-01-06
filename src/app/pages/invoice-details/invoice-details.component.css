@@ -1,0 +1,295 @@
+.invoice__details-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 6rem;
+  margin-bottom: 56px;
+  margin-inline: 1.5rem;
+  max-width: 100%;
+}
+
+.invoice__details-go-back {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.invoice__details-status {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-inline: 1.5rem;
+  margin-bottom: 1rem;
+  background-color: var(--white-color);
+  border-radius: 8px;
+  box-shadow: 0px 10px 10px -10px #48549f1a;
+  max-width: 100%;
+  height: 91px;
+}
+
+.invoice__details-card {
+  max-width: 100%;
+  padding: 1.5rem;
+  background-color: var(--white-color);
+  border-radius: 8px;
+  box-shadow: 0px 10px 10px -10px #48549f1a;
+}
+
+.invoice__details-card-address {
+  width: 93px;
+  margin-bottom: 1.9375rem;
+}
+
+.invoice__details-name {
+  margin-bottom: 1.875rem;
+}
+
+.invoice__details-id {
+  display: flex;
+  align-items: center;
+}
+
+.invoice__details-card-billing {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.invoice__details-bill-date-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.invoice__details-bill-date {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.invoice__details-payment-due {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.invoice__details-bill-to-container {
+  width: 85px;
+  margin-bottom: 2rem;
+}
+
+.invoice__details-bill-to-text {
+  margin-top: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.invoice__details-sent-to-email {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.invoice__details-price-container {
+  max-width: 100%;
+  height: 228px;
+  margin-top: 2.5rem;
+}
+
+.invoice__details-price-items {
+  width: 100%;
+  height: 148px;
+  background-color: var(--color-almost-white);
+  padding: 1.5rem;
+  border-radius: 8px 8px 0px 0px;
+}
+
+.invoice__details-item-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+}
+
+.total {
+  text-align: right;
+}
+
+.header,
+.qty.spacer,
+.price {
+  display: none;
+}
+
+.invoice__details-grand-total {
+  width: 100%;
+  height: 80px;
+  background-color: var(--color-steel-gray);
+  padding-inline: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 0px 0px 8px 8px;
+}
+
+.invoice__details-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  max-width: 100%;
+  height: 91px;
+  background-color: var(--white-color);
+  box-shadow: 0px 10px 10px -10px #48549f1a;
+  position: relative;
+  bottom: 0;
+}
+
+.large__screen {
+  display: none;
+}
+
+.small__screen {
+  display: flex;
+}
+
+.reduce-width {
+  width: 70px;
+}
+
+@media screen and (min-width: 768px) {
+  .small__screen {
+    display: none;
+  }
+
+  .large__screen {
+    display: flex;
+  }
+
+  .invoice__details-status {
+    padding-inline: 2rem;
+    margin-bottom: 1.5rem;
+    height: 88px;
+  }
+
+  .invoice__details-status__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .invoice__details-btn-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .invoice__details-card {
+    padding: 2rem;
+    margin-bottom: 103px;
+  }
+
+  .invoice__details-card-address {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1.3125rem;
+  }
+
+  .invoice__details-card-billing {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  .invoice__details-bill-to-container {
+    margin-bottom: 0px;
+  }
+
+  .invoice__details-price-container {
+    height: 264px;
+    margin-top: 3rem;
+  }
+
+  .invoice__details-price-items {
+    height: 184px;
+    padding: 2rem;
+  }
+
+  .invoice__details-item-row {
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .header {
+    display: block;
+    padding-bottom: 2rem;
+  }
+
+  .qty.spacer {
+    display: block;
+    text-align: center;
+    padding-bottom: 2rem;
+  }
+
+  .price {
+    display: block;
+    text-align: right;
+    padding-bottom: 2rem;
+  }
+
+  .header.qty {
+    text-align: center;
+  }
+
+  .price-breakdown {
+    display: none;
+  }
+
+  .invoice__details-grand-total {
+    height: 80px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .invoice__details-container {
+    margin-inline: auto;
+    max-width: 100%;
+  }
+
+  .invoice__details-status {
+    padding-inline: 2rem;
+  }
+
+  .invoice__details-card {
+    padding: 3rem;
+  }
+
+  .invoice__details-card-address {
+    margin-bottom: 0;
+  }
+
+  .invoice__details-card-billing {
+    gap: 2rem;
+  }
+
+  .invoice__details-price-items {
+    padding: 2rem 3rem;
+  }
+
+  .invoice__details-item-row {
+    gap: 2.5rem;
+  }
+
+  .invoice__details-grand-total {
+    padding-inline: 3rem;
+  }
+
+  .invoice__details-btn-controls {
+    gap: 1rem;
+  }
+
+}
