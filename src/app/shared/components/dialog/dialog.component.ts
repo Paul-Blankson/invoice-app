@@ -1,0 +1,11 @@
+import { Component, Input } from '@angular/core';
+
+@Component({
+  selector: 'app-dialog',
+  imports: [],
+  templateUrl: './dialog.component.html',
+  styleUrl: './dialog.component.css'
+})
+export class DialogComponent {
+ @Input() isOpen: boolean = false;
+}
