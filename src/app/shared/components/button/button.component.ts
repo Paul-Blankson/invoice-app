@@ -13,6 +13,7 @@ export class ButtonComponent {
   @Input() btnVariant: ButtonVariant = 'btn1';
   @Input() text: string = '';
   @Input() textColor: string = '';
+  @Input() isdisabled: boolean = false;
 
   get buttonClass(): string {
     return this.btnVariant;
