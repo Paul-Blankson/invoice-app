@@ -12,6 +12,7 @@ import { selectLoading, selectSelectedInvoice } from '../../store/reducers/invoi
 import { InvoiceActions } from '../../store/actions/invoice.actions';
 import { CommonModule, Location } from '@angular/common';
 import { JoinPipe } from '../../shared/pipes/join.pipe';
+import { DialogComponent } from '../../shared/components/dialog/dialog.component';
 @Component({
   selector: 'app-invoice-details',
   imports: [
@@ -22,7 +23,8 @@ import { JoinPipe } from '../../shared/pipes/join.pipe';
     BadgeComponent,
     ButtonComponent,
     JoinPipe,
-  ],
+    DialogComponent
+],
   templateUrl: './invoice-details.component.html',
   styleUrl: './invoice-details.component.css',
 })
