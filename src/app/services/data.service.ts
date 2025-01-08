@@ -59,4 +59,21 @@ export class DataService {
       subscriber.complete();
     });
   }
+
+  deleteInvoice(id: string): Observable<string> {
+    return new Observable(subscriber => {
+      const invoices = loadFromStorage<Invoice[]>(this.STORAGE_KEY, []);
+      const index = invoices.findIndex(inv => inv.id === id);
+
+      if (index === -1) {
+        subscriber.error(new Error('Invoice not found'));
+        return;
+      }
+
+      const updatedInvoices = invoices.filter(inv => inv.id !== id);
+      saveToStorage(this.STORAGE_KEY, updatedInvoices);
+      subscriber.next(id);
+      subscriber.complete();
+    });
+  }
 }
