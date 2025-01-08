@@ -29,3 +29,11 @@ export const initialInvoiceState: InvoiceState = {
 export const initialThemeState: ThemeState = {
   theme: 'light'
 };
+
+export interface DrawerState {
+  isOpen: boolean;
+}
+
+export const initialState: DrawerState = {
+  isOpen: false
+};
