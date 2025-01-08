@@ -58,4 +58,20 @@ export class InvoiceEffects {
       ),
     ),
   );
+
+  deleteInvoice$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(InvoiceActions.deleteInvoice),
+      mergeMap(({ id }) =>
+        this.dataService.deleteInvoice(id).pipe(
+          map((deletedId) =>
+            InvoiceActions.deleteInvoiceSuccess({ id: deletedId }),
+          ),
+          catchError((error) =>
+            of(InvoiceActions.deleteInvoiceFailure({ error: error.message })),
+          ),
+        ),
+      ),
+    ),
+  );
 }
