@@ -8,12 +8,15 @@ import { Store } from '@ngrx/store';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Invoice } from '../../models/services.type';
-import { selectLoading, selectSelectedInvoice } from '../../store/reducers/invoice.reducer';
+import {
+  selectLoading,
+  selectSelectedInvoice,
+} from '../../store/reducers/invoice.reducer';
 import { InvoiceActions } from '../../store/actions/invoice.actions';
 import { CommonModule, Location } from '@angular/common';
 import { JoinPipe } from '../../shared/pipes/join.pipe';
 import { DialogComponent } from '../../shared/components/dialog/dialog.component';
-import { DeleteCardComponent } from "../../shared/components/delete-card/delete-card.component";
+import { DeleteCardComponent } from '../../shared/components/delete-card/delete-card.component';
 @Component({
   selector: 'app-invoice-details',
   imports: [
@@ -25,8 +28,8 @@ import { DeleteCardComponent } from "../../shared/components/delete-card/delete-
     ButtonComponent,
     JoinPipe,
     DialogComponent,
-    DeleteCardComponent
-],
+    DeleteCardComponent,
+  ],
   templateUrl: './invoice-details.component.html',
   styleUrl: './invoice-details.component.css',
 })
@@ -37,6 +40,7 @@ export class InvoiceDetailsComponent implements OnInit {
 
   readonly invoice$: Observable<Invoice | null>;
   readonly loading$: Observable<boolean>;
+  isDeleteDialogOpen: boolean = false;
 
   constructor() {
     this.invoice$ = this.store.select(selectSelectedInvoice);
@@ -59,10 +63,26 @@ export class InvoiceDetailsComponent implements OnInit {
     if (invoice.status === 'pending') {
       const updatedInvoice: Invoice = {
         ...invoice,
-        status: 'paid'
+        status: 'paid',
       };
-      this.store.dispatch(InvoiceActions.editInvoice({ invoice: updatedInvoice }));
+      this.store.dispatch(
+        InvoiceActions.editInvoice({ invoice: updatedInvoice }),
+      );
       this.store.dispatch(InvoiceActions.loadInvoiceById({ id: invoice.id }));
     }
+  }
+
+  openDeleteDialog(): void {
+    this.isDeleteDialogOpen = true;
+  }
+
+  closeDeleteDialog(): void {
+    this.isDeleteDialogOpen = false;
+  }
+
+  handleDeleteInvoice(invoice: Invoice): void {
+    this.store.dispatch(InvoiceActions.deleteInvoice({ id: invoice.id }));
+    this.closeDeleteDialog();
+    this.location.back();
   }
 }

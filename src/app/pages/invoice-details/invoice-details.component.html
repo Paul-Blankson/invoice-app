@@ -22,7 +22,15 @@
       </div>
       <div class="invoice__details-btn-controls">
         <app-button btnVariant="btn3" textColor="soft-blue" />
-        <app-button btnVariant="btn5" />
+        <app-button
+          btnVariant="btn5"
+          (click)="openDeleteDialog()"
+          (keydown)="
+            $event.key === 'Enter' || $event.key === ' '
+              ? openDeleteDialog()
+              : null
+          "
+        />
         <app-button
           btnVariant="btn2"
           (click)="markAsPaid(invoiceDetail)"
@@ -209,13 +217,36 @@
     </div>
   }
 </div>
+@if (invoice$ | async; as invoiceDetail) {
+  <div class="invoice__details-controls small__screen">
+    <app-button btnVariant="btn3" textColor="soft-blue" />
+    <app-button
+      btnVariant="btn5"
+      (click)="openDeleteDialog()"
+      (keydown)="
+        $event.key === 'Enter' || $event.key === ' ' ? openDeleteDialog() : null
+      "
+    />
+    <app-button
+      btnVariant="btn2"
+      (click)="markAsPaid(invoiceDetail)"
+      (keydown)="
+        $event.key === 'Enter' || $event.key === ' '
+          ? markAsPaid(invoiceDetail)
+          : null
+      "
+      [isdisabled]="
+        invoiceDetail.status === 'draft' || invoiceDetail.status === 'paid'
+      "
+    />
+  </div>
 
-<div class="invoice__details-controls small__screen">
-  <app-button btnVariant="btn3" textColor="soft-blue" />
-  <app-button btnVariant="btn5" />
-  <app-button btnVariant="btn2" />
-</div>
-
-<app-dialog [isOpen]="true" >
-  
-</app-dialog>
+  <app-dialog [isOpen]="isDeleteDialogOpen">
+    <app-delete-card
+      [invoiceId]="invoiceDetail.id"
+      buttonText="Cancel"
+      (onCancel)="closeDeleteDialog()"
+      (onConfirm)="handleDeleteInvoice(invoiceDetail)"
+    ></app-delete-card>
+  </app-dialog>
+}
