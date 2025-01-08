@@ -13,6 +13,7 @@ import { InvoiceActions } from '../../store/actions/invoice.actions';
 import { CommonModule, Location } from '@angular/common';
 import { JoinPipe } from '../../shared/pipes/join.pipe';
 import { DialogComponent } from '../../shared/components/dialog/dialog.component';
+import { DeleteCardComponent } from "../../shared/components/delete-card/delete-card.component";
 @Component({
   selector: 'app-invoice-details',
   imports: [
@@ -23,7 +24,8 @@ import { DialogComponent } from '../../shared/components/dialog/dialog.component
     BadgeComponent,
     ButtonComponent,
     JoinPipe,
-    DialogComponent
+    DialogComponent,
+    DeleteCardComponent
 ],
   templateUrl: './invoice-details.component.html',
   styleUrl: './invoice-details.component.css',
