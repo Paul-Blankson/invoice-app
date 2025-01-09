@@ -12,6 +12,7 @@ import { routes } from './app.routes';
 import { themeFeature } from './store/reducers/theme.reducer';
 import { invoiceFeature } from './store/reducers/invoice.reducer';
 import { InvoiceEffects } from './store/effects/invoice.effects';
+import { drawerReducer } from './store/actions/drawer.reducer';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -20,7 +21,8 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(),
     provideStore({
       [themeFeature.name]: themeFeature.reducer,
-      [invoiceFeature.name]: invoiceFeature.reducer
+      [invoiceFeature.name]: invoiceFeature.reducer,
+      drawer: drawerReducer
     }),
     provideEffects([InvoiceEffects]),
     provideStoreDevtools({
