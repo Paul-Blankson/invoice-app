@@ -4,6 +4,8 @@ import { Invoice } from './services.type';
 export interface AppState {
   invoice: InvoiceState;
   theme: ThemeState;
+  drawer: DrawerState;
+
 }
 
 export interface InvoiceState {
