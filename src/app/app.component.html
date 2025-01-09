@@ -13,9 +13,3 @@
     <router-outlet />
   </main>
 </div>
-
-<app-dialog [isOpen]="(isDrawerOpen$ | async)!" className="dialog__flex-start" (overlayClick)="closeDrawer()">
-  <app-side-drawer>
-    <h1>Drawer Content</h1>
-  </app-side-drawer>
-</app-dialog>
