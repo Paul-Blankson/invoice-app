@@ -17,7 +17,7 @@ import { InvoiceActions } from '../../store/actions/invoice.actions';
 import { BadgeVariant, FilterOption } from '../../shared/models';
 import { IconComponent } from "../../shared/components/icon/icon.component";
 import { AppState } from '../../models/app.state';
-import * as DrawerActions from '../../store/actions/drawer.actions';
+import { SideDrawerComponent } from "../../shared/components/side-drawer/side-drawer.component";
 
 @Component({
   selector: 'app-invoice-list',
@@ -28,7 +28,8 @@ import * as DrawerActions from '../../store/actions/drawer.actions';
     FilterComponent,
     ButtonComponent,
     InvoiceCardComponent,
-    IconComponent
+    IconComponent,
+    SideDrawerComponent
 ],
   templateUrl: './invoice-list.component.html',
   styleUrl: './invoice-list.component.css',
@@ -39,6 +40,7 @@ export class InvoiceListComponent implements OnInit {
   readonly filterStatuses$: Observable<BadgeVariant[]>;
   readonly filteredInvoices$: Observable<Invoice[]>;
   readonly invoiceCount$: Observable<number>;
+  isSideDrawerOpen = false;
 
   readonly filterOptions: FilterOption[] = [
     { value: 'draft', title: 'Draft' },
@@ -78,7 +80,11 @@ export class InvoiceListComponent implements OnInit {
     this.store.dispatch(InvoiceActions.setFilterStatus({ statuses: selectedStatuses }));
   }
 
-  openDrawer(): void {
-    this.store.dispatch(DrawerActions.openDrawer());
+  toggleDrawer() {
+    this.isSideDrawerOpen = !this.isSideDrawerOpen;
+  }
+
+  onDrawerClose() {
+    this.isSideDrawerOpen = false;
   }
 }

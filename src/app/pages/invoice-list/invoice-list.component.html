@@ -30,18 +30,18 @@
         btnVariant="btn1"
         text="New"
         class="mobile"
-        (click)="openDrawer()"
+        (click)="toggleDrawer()"
         (keydown)="
-          $event.key === 'Enter' || $event.key === ' ' ? openDrawer() : null
+          $event.key === 'Enter' || $event.key === ' ' ? toggleDrawer() : null
         "
       />
       <app-button
         btnVariant="btn1"
         text="New Invoice"
         class="large__screens"
-        (click)="openDrawer()"
+        (click)="toggleDrawer()"
         (keydown)="
-          $event.key === 'Enter' || $event.key === ' ' ? openDrawer() : null
+          $event.key === 'Enter' || $event.key === ' ' ? toggleDrawer() : null
         "
       />
     </div>
@@ -85,3 +85,10 @@
     </div>
   }
 </div>
+
+<app-side-drawer
+[isDrawerOpen]="isSideDrawerOpen"
+(close)="onDrawerClose()"
+>
+<p>This is the content of the side drawer.</p>
+</app-side-drawer>
