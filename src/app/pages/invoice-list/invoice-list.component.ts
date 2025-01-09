@@ -16,6 +16,8 @@ import {
 import { InvoiceActions } from '../../store/actions/invoice.actions';
 import { BadgeVariant, FilterOption } from '../../shared/models';
 import { IconComponent } from "../../shared/components/icon/icon.component";
+import { AppState } from '../../models/app.state';
+import * as DrawerActions from '../../store/actions/drawer.actions';
 
 @Component({
   selector: 'app-invoice-list',
@@ -44,7 +46,7 @@ export class InvoiceListComponent implements OnInit {
     { value: 'paid', title: 'Paid' },
   ];
 
-  constructor(private readonly store: Store) {
+  constructor(private readonly store: Store<AppState>) {
     this.invoices$ = this.store.select(selectInvoices);
     this.loading$ = this.store.select(selectLoading);
     this.filterStatuses$ = this.store.select(selectFilterStatuses);
@@ -74,5 +76,9 @@ export class InvoiceListComponent implements OnInit {
 
   onFilterChange(selectedStatuses: BadgeVariant[]): void {
     this.store.dispatch(InvoiceActions.setFilterStatus({ statuses: selectedStatuses }));
+  }
+
+  openDrawer(): void {
+    this.store.dispatch(DrawerActions.openDrawer());
   }
 }
