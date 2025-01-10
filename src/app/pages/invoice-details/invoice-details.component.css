@@ -3,6 +3,7 @@
   flex-direction: column;
   margin-bottom: 56px;
   max-width: 100%;
+  padding: 2rem 1.5rem;
 }
 
 .invoice__details-go-back {
@@ -36,6 +37,7 @@
   background-color: var(--white-color);
   border-radius: 8px;
   box-shadow: 0px 10px 10px -10px #48549f1a;
+  margin-bottom: 91px;
 }
 
 .invoice__details-card-address {
@@ -142,8 +144,10 @@
   height: 91px;
   background-color: var(--white-color);
   box-shadow: 0px 10px 10px -10px #48549f1a;
-  position: relative;
+  position: fixed;
   bottom: 0;
+  left: 0;
+  right: 0;
 }
 
 .large__screen {
@@ -189,6 +193,7 @@
 
   .invoice__details-card {
     padding: 2rem;
+    margin-bottom: 0;
   }
 
   .invoice__details-card-address {

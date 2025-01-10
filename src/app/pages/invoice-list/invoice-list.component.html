@@ -26,8 +26,24 @@
         [selectedStatuses]="(filterStatuses$ | async) || []"
         (selectionChange)="onFilterChange($event)"
       />
-      <app-button btnVariant="btn1" text="New" class="mobile" />
-      <app-button btnVariant="btn1" text="New Invoice" class="large__screens" />
+      <app-button
+        btnVariant="btn1"
+        text="New"
+        class="mobile"
+        (click)="toggleDrawer()"
+        (keydown)="
+          $event.key === 'Enter' || $event.key === ' ' ? toggleDrawer() : null
+        "
+      />
+      <app-button
+        btnVariant="btn1"
+        text="New Invoice"
+        class="large__screens"
+        (click)="toggleDrawer()"
+        (keydown)="
+          $event.key === 'Enter' || $event.key === ' ' ? toggleDrawer() : null
+        "
+      />
     </div>
   </div>
   @if (loading$ | async) {
@@ -69,3 +85,10 @@
     </div>
   }
 </div>
+
+<app-side-drawer
+[isDrawerOpen]="isSideDrawerOpen"
+(close)="onDrawerClose()"
+>
+<p>This is the content of the side drawer.</p>
+</app-side-drawer>

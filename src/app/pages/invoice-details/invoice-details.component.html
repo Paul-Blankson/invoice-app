@@ -21,7 +21,14 @@
         <app-badge [variant]="invoiceDetail.status" />
       </div>
       <div class="invoice__details-btn-controls">
-        <app-button btnVariant="btn3" textColor="soft-blue" />
+        <app-button
+          btnVariant="btn3"
+          textColor="soft-blue"
+          (click)="toggleDrawer()"
+          (keydown)="
+            $event.key === 'Enter' || $event.key === ' ' ? toggleDrawer() : null
+          "
+        />
         <app-button
           btnVariant="btn5"
           (click)="openDeleteDialog()"
@@ -219,7 +226,14 @@
 </div>
 @if (invoice$ | async; as invoiceDetail) {
   <div class="invoice__details-controls small__screen">
-    <app-button btnVariant="btn3" textColor="soft-blue" />
+    <app-button
+      btnVariant="btn3"
+      textColor="soft-blue"
+      (click)="toggleDrawer()"
+      (keydown)="
+        $event.key === 'Enter' || $event.key === ' ' ? toggleDrawer() : null
+      "
+    />
     <app-button
       btnVariant="btn5"
       (click)="openDeleteDialog()"
@@ -241,7 +255,11 @@
     />
   </div>
 
-  <app-dialog [isOpen]="isDeleteDialogOpen">
+  <app-dialog
+    [isOpen]="isDeleteDialogOpen"
+    className="dialog__center"
+    (overlayClick)="closeDeleteDialog()"
+  >
     <app-delete-card
       [invoiceId]="invoiceDetail.id"
       buttonText="Cancel"
@@ -249,4 +267,8 @@
       (onConfirm)="handleDeleteInvoice(invoiceDetail)"
     ></app-delete-card>
   </app-dialog>
+
+  <app-side-drawer [isDrawerOpen]="isSideDrawerOpen" (close)="onDrawerClose()">
+    <p>Input fields will be here in Lab 2.</p>
+  </app-side-drawer>
 }

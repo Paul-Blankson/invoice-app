@@ -1,3 +1,7 @@
+.invoice__list-container {
+  padding: 2rem 1.5rem;
+}
+
 .invoice__header {
   display: flex;
   justify-content: space-between;

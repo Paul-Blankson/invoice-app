@@ -1,5 +1,6 @@
 .delete-card__container {
-  width: 100%;
+  width: 90%;
+  margin-left: 5%;
   padding: 2rem;
   background-color: var(--white-color);
   border-radius: 0.5rem;
