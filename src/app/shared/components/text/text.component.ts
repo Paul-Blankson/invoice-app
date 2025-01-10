@@ -18,7 +18,7 @@ import { TextVariant } from '../../models';
         font-family: 'Spartan', sans-serif;
         font-weight: 400;
         margin: 0;
-        color: var(--color-very-dark);
+        color: var(--primary-text-color);
       }
       .large {
         font-size: 0.75rem;
