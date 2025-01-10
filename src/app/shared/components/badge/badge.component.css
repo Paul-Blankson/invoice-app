@@ -32,9 +32,9 @@
 }
 
 .badge--draft {
-  background-color: rgba(55, 59, 83, 0.0571);
+  background-color: var(--draft-bg-color);
 }
 
 .badge--draft .badge__indicator {
-  background-color: var(--color-steel-gray);
+  background-color: var(--draft-indicator-color);
 }
