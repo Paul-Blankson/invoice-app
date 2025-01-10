@@ -1,0 +1,33 @@
+<div class="delete-card__container">
+  <div class="delete-card__text">
+    <app-headline text="Confirm Deletion" level="h2" />
+    <app-text
+      [text]="
+        'Are you sure you want to delete invoice #' +
+        invoiceId +
+        '? This action cannot be undone.'
+      "
+      variant="p"
+      className="large soft-blue"
+    />
+  </div>
+  <div class="delete-card__buttons">
+    <app-button
+      btnVariant="btn3"
+      [text]="buttonText"
+      textColor="soft-blue"
+      (click)="onCancel.emit()"
+      (keydown)="
+        $event.key === 'Enter' || $event.key === ' ' ? onCancel.emit() : null
+      "
+    />
+    <app-button
+      btnVariant="btn5"
+      text="Delete"
+      (click)="onConfirm.emit()"
+      (keydown)="
+        $event.key === 'Enter' || $event.key === ' ' ? onConfirm.emit() : null
+      "
+    />
+  </div>
+</div>
