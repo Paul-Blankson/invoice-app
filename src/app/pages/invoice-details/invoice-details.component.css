@@ -1,9 +1,7 @@
 .invoice__details-container {
   display: flex;
   flex-direction: column;
-  margin-top: 6rem;
   margin-bottom: 56px;
-  margin-inline: 1.5rem;
   max-width: 100%;
 }
 
@@ -169,10 +167,6 @@
     display: flex;
   }
 
-  .invoice__details-container {
-    margin-top: 3rem;
-  }
-
   .invoice__details-status {
     padding-inline: 2rem;
     margin-bottom: 1.5rem;
@@ -195,7 +189,6 @@
 
   .invoice__details-card {
     padding: 2rem;
-    margin-bottom: 103px;
   }
 
   .invoice__details-card-address {
@@ -259,11 +252,6 @@
 }
 
 @media screen and (min-width: 1024px) {
-  .invoice__details-container {
-    margin-inline: auto;
-    margin-top: 4rem;
-    max-width: 100%;
-  }
 
   .invoice__details-status {
     padding-inline: 2rem;

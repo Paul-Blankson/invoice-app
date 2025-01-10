@@ -1,71 +1,71 @@
-<div class="invoice__header">
-  <div class="invoice__header-text-container">
-    <app-headline level="h1" text="Invoices" class="large__screens" />
-    <app-headline level="h2" text="Invoices" class="mobile" />
-    @if (invoiceCount$ | async; as count) {
-      <app-text
-        variant="p"
-        [text]="count + ' invoices'"
-        className="large muted-blue"
-        class="mobile"
-      />
-      <app-text
-        variant="p"
-        [text]="'There are ' + count + ' invoices'"
-        className="large muted-blue"
-        class="large__screens"
-      />
-    }
-  </div>
+<div class="invoice__list-container">
+  <div class="invoice__header">
+    <div class="invoice__header-text-container">
+      <app-headline level="h1" text="Invoices" class="large__screens" />
+      <app-headline level="h2" text="Invoices" class="mobile" />
+      @if (invoiceCount$ | async; as count) {
+        <app-text
+          variant="p"
+          [text]="count + ' invoices'"
+          className="large muted-blue"
+          class="mobile"
+        />
+        <app-text
+          variant="p"
+          [text]="'There are ' + count + ' invoices'"
+          className="large muted-blue"
+          class="large__screens"
+        />
+      }
+    </div>
 
-  <div class="invoice__header-controls-container">
-    <app-filter
-      [options]="filterOptions"
-      label="Filter by status"
-      [selectedStatuses]="(filterStatuses$ | async) || []"
-      (selectionChange)="onFilterChange($event)"
-    />
-    <app-button btnVariant="btn1" text="New" class="mobile" />
-    <app-button btnVariant="btn1" text="New Invoice" class="large__screens" />
-  </div>
-  
-</div>
-@if (loading$ | async) {
-  <div class="invoice__list">
-    <app-headline level="h2" text="Loading invoices..." class="mobile" />
-  </div>
-} @else {
-  <div class="invoice__list">
-    @for (invoice of filteredInvoices$ | async; track invoice.id) {
-      <app-invoice-card [invoice]="invoice" />
-    }
-    @empty {
-    <div class="invoice__empty">
-      <app-icon name="illustration-empty" class="invoice__empty-icon" />
-      <app-headline
-        level="h2"
-        text="There is nothing here"
-        class="invoice__empty-headline"
+    <div class="invoice__header-controls-container">
+      <app-filter
+        [options]="filterOptions"
+        label="Filter by status"
+        [selectedStatuses]="(filterStatuses$ | async) || []"
+        (selectionChange)="onFilterChange($event)"
       />
-      <app-text
-        variant="p"
-        text="Create an invoice by clicking the "
-        className="muted-blue"
-        class="invoice__empty-text"
-      />
-      <div class="invoice__empty-inline-text">
-        <app-text
-          variant="span"
-          text="New button"
-          className="muted-blue bold"
-        />
-        <app-text
-          variant="span"
-          text=" and get started"
-          className="muted-blue"
-        />
-      </div>
+      <app-button btnVariant="btn1" text="New" class="mobile" />
+      <app-button btnVariant="btn1" text="New Invoice" class="large__screens" />
+    </div>
+  </div>
+  @if (loading$ | async) {
+    <div class="invoice__list">
+      <app-headline level="h2" text="Loading invoices..." class="mobile" />
+    </div>
+  } @else {
+    <div class="invoice__list">
+      @for (invoice of filteredInvoices$ | async; track invoice.id) {
+        <app-invoice-card [invoice]="invoice" />
+      } @empty {
+        <div class="invoice__empty">
+          <app-icon name="illustration-empty" class="invoice__empty-icon" />
+          <app-headline
+            level="h2"
+            text="There is nothing here"
+            class="invoice__empty-headline"
+          />
+          <app-text
+            variant="p"
+            text="Create an invoice by clicking the "
+            className="muted-blue"
+            class="invoice__empty-text"
+          />
+          <div class="invoice__empty-inline-text">
+            <app-text
+              variant="span"
+              text="New button"
+              className="muted-blue bold"
+            />
+            <app-text
+              variant="span"
+              text=" and get started"
+              className="muted-blue"
+            />
+          </div>
+        </div>
+      }
     </div>
   }
-  </div>
-}
+</div>
