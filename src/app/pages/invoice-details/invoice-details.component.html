@@ -23,7 +23,18 @@
       <div class="invoice__details-btn-controls">
         <app-button btnVariant="btn3" textColor="soft-blue" />
         <app-button btnVariant="btn5" />
-        <app-button btnVariant="btn2" />
+        <app-button
+          btnVariant="btn2"
+          (click)="markAsPaid(invoiceDetail)"
+          (keydown)="
+            $event.key === 'Enter' || $event.key === ' '
+              ? markAsPaid(invoiceDetail)
+              : null
+          "
+          [isdisabled]="
+            invoiceDetail.status === 'draft' || invoiceDetail.status === 'paid'
+          "
+        />
       </div>
     </div>
 
@@ -204,3 +215,7 @@
   <app-button btnVariant="btn5" />
   <app-button btnVariant="btn2" />
 </div>
+
+<app-dialog [isOpen]="true" >
+  
+</app-dialog>
