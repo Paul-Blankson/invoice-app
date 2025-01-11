@@ -42,6 +42,8 @@
   --draft-indicator-color: var(--color-steel-gray);
   --side-drawer-bg-color: var(--white-color);
   --overlay-bg-color: rgba(0, 0, 0, 0.5);
+  --text-field-border-color: var(--color-light-gray);
+  --text-fieldhover-border-color: var(--color-secondary-blue);
 }
 
 [data-theme="dark"] {
@@ -61,6 +63,8 @@
   --draft-indicator-color: var(--color-light-gray);
   --side-drawer-bg-color: var(--color-midnight-gray);
   --overlay-bg-color: transparent;
+  --text-field-border-color: var(--color-deep-gray);
+  --text-fieldhover-border-color: var(--color-primary-blue);
 }
 
 @font-face {
