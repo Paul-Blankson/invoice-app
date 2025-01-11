@@ -90,5 +90,10 @@
 [isDrawerOpen]="isSideDrawerOpen"
 (close)="onDrawerClose()"
 >
-<p>This is the content of the side drawer.</p>
+<app-text-field
+  label="Client's Name"
+  placeholder="e.g. Alex Smith"
+  [required]="false"
+  type="text"
+></app-text-field>
 </app-side-drawer>
