@@ -1,0 +1,48 @@
+<div class="dropdown" [class.active]="isOpen" appClickOutside (clickOutside)="closeDropdown()">
+  @if (label) {
+    <label class="dropdown__label" for="dropdown">
+      {{ label }}
+      @if (required) {
+        <span class="required">*</span>
+      }
+    </label>
+  }
+
+  <button
+    type="button"
+    class="dropdown__toggle"
+    [class.error]="showError"
+    [attr.aria-expanded]="isOpen"
+    [attr.aria-label]="label"
+    (click)="toggleDropdown()"
+    [disabled]="control?.disabled">
+    <span class="dropdown__selected">{{ displayValue }}</span>
+    <app-icon
+      name="icon-arrow-down"
+      [class.rotate]="isOpen"
+      />
+  </button>
+
+  @if (isOpen) {
+    <div class="dropdown__menu" role="listbox">
+      @for (option of options; track option.value) {
+        <option
+          class="dropdown__option"
+          [class.selected]="option.value === control?.value"
+          [class.disabled]="option.disabled"
+          [attr.aria-selected]="option.value === control?.value"
+          (click)="selectOption(option)"
+          (keydown)="handleKeyDown($event)">
+          {{ option.label }}
+          @if (option.value === control?.value) {
+            <app-icon name="icon-check" />
+          }
+        </option>
+      }
+    </div>
+  }
+
+  @if (showError) {
+    <span class="error-message">{{ error }}</span>
+  }
+</div>
