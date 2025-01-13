@@ -32,3 +32,14 @@ export interface DropdownChanges<T> {
   option: DropdownOption<T>;
   value: T;
 }
+export interface CalendarDay {
+  date: number;
+  isCurrentMonth: boolean;
+  isToday: boolean;
+  isSelected: boolean;
+  id: string;
+}
+
+export type DateValue = string | null;
+export type OnChangeCallback = (value: DateValue) => void;
+export type OnTouchedCallback = () => void;
