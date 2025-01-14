@@ -1,0 +1,56 @@
+.invoice-form {
+  height: 100%;
+}
+
+.invoice-form .form-section__title {
+  color: var(--color-primary-blue);
+  font-size: 0.75rem;
+  line-height: 15px;
+  letter-spacing: -0.25px;
+  font-weight: 700;
+  margin-bottom: 24px;
+}
+
+.invoice-form .form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.invoice-form .address-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+
+.form-section__bill-from {
+  margin-bottom: 40px;
+}
+
+.form-group__address {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.form-section__bill-to {
+  margin-bottom: 40px;
+}
+
+.invoice-form .invoice-details-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+@media screen and (min-width: 768px) {
+  .invoice-form .address-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .invoice-form .invoice-details-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+}

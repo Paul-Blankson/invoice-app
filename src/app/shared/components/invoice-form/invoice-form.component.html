@@ -1,0 +1,88 @@
+<form [formGroup]="invoiceForm" class="invoice-form" [class.loading]="isLoading">
+  <div class="form-content">
+    <!-- Bill From Section -->
+    <section class="form-section form-section__bill-from">
+      <h2 class="form-section__title">Bill From</h2>
+      <div class="form-group" formGroupName="senderAddress">
+        <app-text-field id="sender-street" label="Street Address"
+          [control]="$any(invoiceForm.get('senderAddress.street'))"
+          [required]="false" />
+
+        <div class="address-grid">
+          <app-text-field id="sender-city" label="City" [control]="$any(invoiceForm.get('senderAddress.city'))"
+            placeholder="e.g. London" [required]="false" />
+
+          <app-text-field id="sender-postcode" label="Post Code"
+            [control]="$any(invoiceForm.get('senderAddress.postCode'))" placeholder="e.g. E1 3EZ"
+            [required]="false" />
+
+          <app-text-field id="sender-country" label="Country" [control]="$any(invoiceForm.get('senderAddress.country'))"
+            placeholder="e.g. United Kingdom" [required]="false" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Bill To Section -->
+    <section class="form-section form-section__bill-to" formGroupName="clientDetails">
+      <h2 class="form-section__title">Bill To</h2>
+      <div class="form-group">
+        <app-text-field id="client-name" label="Client's Name" [control]="$any(invoiceForm.get('clientDetails.name'))"
+         [required]="false" />
+
+        <app-text-field id="client-email" label="Client's Email"
+          [control]="$any(invoiceForm.get('clientDetails.email'))" placeholder="e.g. email@example.com"
+          [required]="false" />
+
+        <div formGroupName="address" class="form-group__address">
+          <app-text-field id="client-street" label="Street Address"
+            [control]="$any(invoiceForm.get('clientDetails.address.street'))"
+            [required]="false" />
+
+          <div class="address-grid">
+            <app-text-field id="client-city" label="City"
+              [control]="$any(invoiceForm.get('clientDetails.address.city'))" placeholder="e.g. London"
+              [required]="false" />
+
+            <app-text-field id="client-postcode" label="Post Code" [control]="
+                $any(invoiceForm.get('clientDetails.address.postCode'))
+              " placeholder="e.g. E1 3EZ" [required]="false" />
+
+            <app-text-field id="client-country" label="Country"
+              [control]="$any(invoiceForm.get('clientDetails.address.country'))" placeholder="e.g. United Kingdom"
+              [required]="false" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Invoice Details -->
+    <section class="form-section" formGroupName="invoiceDetails">
+      <div class="invoice-details-grid">
+        <app-date-picker id="invoice-date" label="Invoice Date"
+          [formControl]="$any(invoiceForm.get('invoiceDetails.date'))" [required]="false"
+          [errorMessage]="getFieldError('invoiceDetails.date')" />
+
+        <app-dropdown label="Payment Terms" [options]="paymentTermsOptions"
+          [control]="$any(invoiceForm.get('invoiceDetails.paymentTerms'))" [required]="false"
+          [error]="getFieldError('invoiceDetails.paymentTerms')" (selectionChange)="onPaymentTermsChange($event)" />
+      </div>
+
+      <app-text-field id="description" label="Project Description"
+        [control]="$any(invoiceForm.get('invoiceDetails.description'))"
+        [required]="false" />
+    </section>
+
+    <!-- Item List -->
+    <section class="form-section">
+      <h2 class="section-title">Item List</h2>
+      <div formArrayName="items" class="items-list">
+
+      </div>
+
+    </section>
+
+  </div>
+
+
+</form>
+

@@ -1,3 +1,4 @@
+import { FormControl } from '@angular/forms';
 
 interface Address {
   street: string;
@@ -6,11 +7,18 @@ interface Address {
   country: string;
 }
 
-interface Item {
+export interface Item {
   name: string;
   quantity: number;
   price: number;
   total: number;
+}
+
+export interface ItemFormControls {
+  name: FormControl<string>;
+  quantity: FormControl<number>;
+  price: FormControl<number>;
+  total: FormControl<number>;
 }
 
 export interface Invoice {

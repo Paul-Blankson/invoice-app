@@ -268,7 +268,12 @@
     ></app-delete-card>
   </app-dialog>
 
-  <app-side-drawer [isDrawerOpen]="isSideDrawerOpen" (close)="onDrawerClose()">
+  <app-side-drawer
+    [isDrawerOpen]="isSideDrawerOpen"
+    [title]="invoiceId"
+    [isEditing]="true"
+    (close)="onDrawerClose()"
+  >
     <p>Input fields will be here in Lab 2.</p>
   </app-side-drawer>
 }

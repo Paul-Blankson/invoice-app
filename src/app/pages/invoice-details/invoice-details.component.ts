@@ -96,4 +96,8 @@ export class InvoiceDetailsComponent implements OnInit {
   onDrawerClose() {
     this.isSideDrawerOpen = false;
   }
+
+  get invoiceId(): string {
+    return this.activeRoute.snapshot.paramMap.get('id') ?? '';
+  }
 }

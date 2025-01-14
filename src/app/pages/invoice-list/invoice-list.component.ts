@@ -18,9 +18,7 @@ import { BadgeVariant, DropdownChanges, DropdownOption, FilterOption } from '../
 import { IconComponent } from '../../shared/components/icon/icon.component';
 import { AppState } from '../../models/app.state';
 import { SideDrawerComponent } from '../../shared/components/side-drawer/side-drawer.component';
-import { TextFieldComponent } from '../../shared/components/text-field/text-field.component';
-import { DropdownComponent } from '../../shared/components/dropdown/dropdown.component';
-import { DatePickerComponent } from '../../shared/components/date-picker/date-picker.component';
+import { InvoiceFormComponent } from "../../shared/components/invoice-form/invoice-form.component";
 
 @Component({
   selector: 'app-invoice-list',
@@ -33,9 +31,7 @@ import { DatePickerComponent } from '../../shared/components/date-picker/date-pi
     InvoiceCardComponent,
     IconComponent,
     SideDrawerComponent,
-    TextFieldComponent,
-    DropdownComponent,
-    DatePickerComponent
+    InvoiceFormComponent
 ],
   templateUrl: './invoice-list.component.html',
   styleUrl: './invoice-list.component.css',

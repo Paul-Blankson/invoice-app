@@ -13,6 +13,7 @@ import { IconComponent } from "../icon/icon.component";
 export class SideDrawerComponent {
   @Input() isDrawerOpen: boolean = false;
   @Input() title: string = '';
+  @Input() isEditing: boolean = false;
   @Output() close = new EventEmitter<void>();
 
   onClickOutside() {
