@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { map, Observable, of, tap } from 'rxjs';
 import { Invoice } from '../models/services.type';
 import { loadFromStorage, saveToStorage } from '../store/utils/utils';
+import { generateInvoiceId } from '../utils';
 
 @Injectable({
   providedIn: 'root',
@@ -73,6 +74,48 @@ export class DataService {
       const updatedInvoices = invoices.filter(inv => inv.id !== id);
       saveToStorage(this.STORAGE_KEY, updatedInvoices);
       subscriber.next(id);
+      subscriber.complete();
+    });
+  }
+
+  createInvoice(invoiceData: Omit<Invoice, 'id' | 'createdAt'>): Observable<Invoice> {
+    return new Observable(subscriber => {
+      const invoices = loadFromStorage(this.STORAGE_KEY, []);
+
+      const newInvoice: Invoice = {
+        id: generateInvoiceId(),
+        createdAt: new Date().toISOString(),
+        paymentDue: invoiceData.paymentDue,
+        description: invoiceData.description,
+        paymentTerms: invoiceData.paymentTerms,
+        clientName: invoiceData.clientName,
+        clientEmail: invoiceData.clientEmail,
+        status: invoiceData.status,
+        senderAddress: {
+          street: invoiceData.senderAddress.street,
+          city: invoiceData.senderAddress.city,
+          postCode: invoiceData.senderAddress.postCode,
+          country: invoiceData.senderAddress.country
+        },
+        clientAddress: {
+          street: invoiceData.clientAddress.street,
+          city: invoiceData.clientAddress.city,
+          postCode: invoiceData.clientAddress.postCode,
+          country: invoiceData.clientAddress.country
+        },
+        items: invoiceData.items.map(item => ({
+          name: item.name,
+          quantity: item.quantity,
+          price: item.price,
+          total: item.total
+        })),
+        total: invoiceData.total
+      };
+
+      const updatedInvoices = [...invoices, newInvoice];
+      saveToStorage(this.STORAGE_KEY, updatedInvoices);
+
+      subscriber.next(newInvoice);
       subscriber.complete();
     });
   }
