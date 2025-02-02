@@ -5,6 +5,7 @@ button {
   height: 48px;
   border-radius: 1.5rem;
   padding: 17px 23px 16px 24px;
+  white-space: nowrap;
 }
 
 .btn1 {
@@ -74,14 +75,10 @@ button {
 }
 
 .btn6 {
-  background-color: var(--color-pale-blue-white);
-  color: var(--color-soft-blue);
+  width: 100%;
+  background-color: var(--items-bg-color);
+  color: var(--primary-text-color);
   padding: 17px 115px 16px 115px;
-}
-
-.btn6:hover {
-  background-color: var(--color-light-gray);
-  transition: background-color 0.3s ease-in-out;
 }
 
 button:disabled {
