@@ -18,7 +18,7 @@ import { HeadlineComponent } from '../headline/headline.component';
 import { TextComponent } from '../text/text.component';
 import { DropdownOption } from '../../models';
 import { emailValidator } from '../../validators/email.validator';
-import { noSpecialCharactersValidator } from '../../validators/special-charaters.validator';
+import { noSpecialCharactersValidator } from '../../validators/special-characters.validator';
 import { InvoiceActions } from '../../../store/actions/invoice.actions';
 import { selectSelectedInvoice } from '../../../store/reducers/invoice.reducer';
 
