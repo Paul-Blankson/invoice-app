@@ -270,10 +270,10 @@
 
   <app-side-drawer
     [isDrawerOpen]="isSideDrawerOpen"
-    [title]="invoiceId"
+    [title]="'Edit #' + invoiceId"
     [isEditing]="true"
     (close)="onDrawerClose()"
   >
-    <p>Input fields will be here in Lab 2.</p>
+    <app-invoice-form [isEditMode]="true" (close)="onDrawerClose()" />
   </app-side-drawer>
 }
