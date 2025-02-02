@@ -80,7 +80,7 @@ export class HeadlineComponent {
   @Input() className?: string;
   @Input() text: string = '';
 
-  getClasses(): string {
+ public getClasses(): string {
     return `headline ${this.level} ${this.className ?? ''}`.trim();
   }
 }
