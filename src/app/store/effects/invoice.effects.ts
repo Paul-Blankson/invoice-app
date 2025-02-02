@@ -74,4 +74,20 @@ export class InvoiceEffects {
       ),
     ),
   );
+
+  createInvoice$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(InvoiceActions.createInvoice),
+      mergeMap(({ invoice }) =>
+        this.dataService.createInvoice(invoice).pipe(
+          map((createdInvoice) =>
+            InvoiceActions.createInvoiceSuccess({ invoice: createdInvoice })
+          ),
+          catchError((error) =>
+            of(InvoiceActions.createInvoiceFailure({ error: error.message }))
+          )
+        )
+      )
+    )
+  );
 }
