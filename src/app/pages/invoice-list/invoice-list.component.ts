@@ -14,11 +14,14 @@ import {
   selectLoading,
 } from '../../store/reducers/invoice.reducer';
 import { InvoiceActions } from '../../store/actions/invoice.actions';
-import { BadgeVariant, DropdownChanges, DropdownOption, FilterOption } from '../../shared/models';
+import {
+  BadgeVariant,
+  FilterOption,
+} from '../../shared/models';
 import { IconComponent } from '../../shared/components/icon/icon.component';
 import { AppState } from '../../models/app.state';
 import { SideDrawerComponent } from '../../shared/components/side-drawer/side-drawer.component';
-import { InvoiceFormComponent } from "../../shared/components/invoice-form/invoice-form.component";
+import { InvoiceFormComponent } from '../../shared/components/invoice-form/invoice-form.component';
 
 @Component({
   selector: 'app-invoice-list',
@@ -31,20 +34,21 @@ import { InvoiceFormComponent } from "../../shared/components/invoice-form/invoi
     InvoiceCardComponent,
     IconComponent,
     SideDrawerComponent,
-    InvoiceFormComponent
-],
+    InvoiceFormComponent,
+  ],
   templateUrl: './invoice-list.component.html',
   styleUrl: './invoice-list.component.css',
 })
 export class InvoiceListComponent implements OnInit {
-  readonly invoices$: Observable<Invoice[]>;
-  readonly loading$: Observable<boolean>;
-  readonly filterStatuses$: Observable<BadgeVariant[]>;
-  readonly filteredInvoices$: Observable<Invoice[]>;
-  readonly invoiceCount$: Observable<number>;
-  isSideDrawerOpen = false;
+ public readonly invoices$: Observable<Invoice[]>;
+ public readonly loading$: Observable<boolean>;
+ public readonly filterStatuses$: Observable<BadgeVariant[]>;
+ public readonly filteredInvoices$: Observable<Invoice[]>;
+ public readonly invoiceCount$: Observable<number>;
 
-  readonly filterOptions: FilterOption[] = [
+ public isSideDrawerOpen = false;
+
+ public readonly filterOptions: FilterOption[] = [
     { value: 'draft', title: 'Draft' },
     { value: 'pending', title: 'Pending' },
     { value: 'paid', title: 'Paid' },
@@ -76,28 +80,18 @@ export class InvoiceListComponent implements OnInit {
     this.store.dispatch(InvoiceActions.loadInvoices());
   }
 
-  onFilterChange(selectedStatuses: BadgeVariant[]): void {
+ public onFilterChange(selectedStatuses: BadgeVariant[]): void {
     this.store.dispatch(
       InvoiceActions.setFilterStatus({ statuses: selectedStatuses }),
     );
   }
 
-  toggleDrawer() {
+ public toggleDrawer() {
     this.isSideDrawerOpen = !this.isSideDrawerOpen;
   }
 
-  onDrawerClose() {
+ public onDrawerClose() {
     this.isSideDrawerOpen = false;
-  }
-
-  readonly paymentTermsOptions: DropdownOption<number>[] = [
-    { label: 'Net 1 Day', value: 1 },
-    { label: 'Net 7 Days', value: 7 },
-    { label: 'Net 14 Days', value: 14 },
-    { label: 'Net 30 Days', value: 30, },
-  ];
-
-  onPaymentTermsChange(event: DropdownChanges<number>): void {
-    console.log("Selected payment term ", event.option.label);
+    this.store.dispatch(InvoiceActions.loadInvoices());
   }
 }
