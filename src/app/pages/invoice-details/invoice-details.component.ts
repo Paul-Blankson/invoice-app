@@ -18,6 +18,7 @@ import { JoinPipe } from '../../shared/pipes/join.pipe';
 import { DialogComponent } from '../../shared/components/dialog/dialog.component';
 import { DeleteCardComponent } from '../../shared/components/delete-card/delete-card.component';
 import { SideDrawerComponent } from "../../shared/components/side-drawer/side-drawer.component";
+import { InvoiceFormComponent } from "../../shared/components/invoice-form/invoice-form.component";
 @Component({
   selector: 'app-invoice-details',
   imports: [
@@ -30,7 +31,8 @@ import { SideDrawerComponent } from "../../shared/components/side-drawer/side-dr
     JoinPipe,
     DialogComponent,
     DeleteCardComponent,
-    SideDrawerComponent
+    SideDrawerComponent,
+    InvoiceFormComponent
 ],
   templateUrl: './invoice-details.component.html',
   styleUrl: './invoice-details.component.css',
@@ -40,10 +42,10 @@ export class InvoiceDetailsComponent implements OnInit {
   public readonly activeRoute: ActivatedRoute = inject(ActivatedRoute);
   private readonly location: Location = inject(Location);
 
-  readonly invoice$: Observable<Invoice | null>;
-  readonly loading$: Observable<boolean>;
-  isDeleteDialogOpen: boolean = false;
-  isSideDrawerOpen: boolean = false;
+  public readonly invoice$: Observable<Invoice | null>;
+  public readonly loading$: Observable<boolean>;
+  public isDeleteDialogOpen: boolean = false;
+  public isSideDrawerOpen: boolean = false;
 
   constructor() {
     this.invoice$ = this.store.select(selectSelectedInvoice);
@@ -57,12 +59,12 @@ export class InvoiceDetailsComponent implements OnInit {
     }
   }
 
-  goBack(): void {
+  public goBack(): void {
     this.store.dispatch(InvoiceActions.loadInvoices());
     this.location.back();
   }
 
-  markAsPaid(invoice: Invoice): void {
+  public markAsPaid(invoice: Invoice): void {
     if (invoice.status === 'pending') {
       const updatedInvoice: Invoice = {
         ...invoice,
@@ -75,29 +77,34 @@ export class InvoiceDetailsComponent implements OnInit {
     }
   }
 
-  openDeleteDialog(): void {
+  public openDeleteDialog(): void {
     this.isDeleteDialogOpen = true;
   }
 
-  closeDeleteDialog(): void {
+  public closeDeleteDialog(): void {
     this.isDeleteDialogOpen = false;
   }
 
-  handleDeleteInvoice(invoice: Invoice): void {
+  public handleDeleteInvoice(invoice: Invoice): void {
     this.store.dispatch(InvoiceActions.deleteInvoice({ id: invoice.id }));
     this.closeDeleteDialog();
     this.location.back();
   }
 
-  toggleDrawer() {
+  public toggleDrawer() {
     this.isSideDrawerOpen = !this.isSideDrawerOpen;
   }
 
-  onDrawerClose() {
+  public onDrawerClose() {
     this.isSideDrawerOpen = false;
+    // Reload current invoice after drawer closes
+    const invoiceId = this.activeRoute.snapshot.paramMap.get('id');
+    if (invoiceId) {
+      this.store.dispatch(InvoiceActions.loadInvoiceById({ id: invoiceId }));
+    }
   }
 
-  get invoiceId(): string {
+  public get invoiceId(): string {
     return this.activeRoute.snapshot.paramMap.get('id') ?? '';
   }
 }
