@@ -15,7 +15,7 @@ export const InvoiceActions = createActionGroup({
 
     'Set Filter Status': props<{ statuses: BadgeVariant[] }>(),
 
-    'Create Invoice': props<{ invoice: Invoice }>(),
+    'Create Invoice': props<{ invoice: Omit<Invoice, 'id' | 'createdAt'> }>(),
     'Create Invoice Success': props<{ invoice: Invoice }>(),
     'Create Invoice Failure': props<{ error: string }>(),
 
