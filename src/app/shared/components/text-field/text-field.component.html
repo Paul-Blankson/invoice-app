@@ -1,19 +1,23 @@
 <div
   class="text-field"
-  [class.text-field--error]="error"
-  [class.text-field--disabled]="disabled"
+  [class.text-field--error]="props.isInvalid"
+  [class.text-field--disabled]="isDisabled"
 >
   <div class="text-field__header">
     <label
       [for]="id"
       class="text-field__label"
-      [class.text-field__label--required]="required"
+      [class.text-field__label--error]="props.isInvalid"
     >
-      {{ label }}
+      {{ props.label }}
     </label>
-    @if (error) {
-      <span [id]="id + '-error'" class="text-field__error" role="alert">
-        {{ error }}
+    @if (props.isInvalid && props.errorMessage) {
+      <span
+        [id]="id + '-error'"
+        class="text-field__error"
+        role="alert"
+      >
+        {{ props.errorMessage }}
       </span>
     }
   </div>
@@ -21,16 +25,15 @@
   <div class="text-field__input-wrapper">
     <input
       [id]="id"
-      [type]="type"
+      [type]="props.type"
       [value]="value"
-      [placeholder]="placeholder"
-      [required]="required"
-      [disabled]="disabled"
-      [attr.aria-invalid]="!!error"
-      [attr.aria-describedby]="error ? id + '-error' : null"
+      [placeholder]="props.placeholder"
+      (input)="onInputChange($event)"
+      (blur)="onTouched()"
+      [attr.aria-invalid]="props.isInvalid"
+      [attr.aria-describedby]="props.isInvalid ? id + '-error' : null"
+      [disabled]="isDisabled"
       class="text-field__input"
-      (input)="onInput($event)"
-      (blur)="onBlur()"
     />
   </div>
 </div>
