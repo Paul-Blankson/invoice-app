@@ -31,6 +31,9 @@ import { TextVariant } from '../../models';
         line-height: 18px;
         letter-spacing: -0.2291666716337204px;
       }
+      .primary-color {
+        color: var(--primary-text-color);
+      }
       .soft-blue {
         color: var(--color-soft-blue);
       }
