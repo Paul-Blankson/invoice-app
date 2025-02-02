@@ -14,35 +14,35 @@ export class DataService {
 
   constructor(private readonly http: HttpClient) {}
 
-  get invoiceData(): Observable<Invoice[]> {
+  public get invoiceData(): Observable<Invoice[]> {
     const storedInvoices = loadFromStorage<Invoice[]>(this.STORAGE_KEY, []);
 
     if (storedInvoices.length > 0) {
       return of(storedInvoices);
     }
 
-    return this.http.get<Invoice[]>(this.dataUrl).pipe(
-      tap(invoices => saveToStorage(this.STORAGE_KEY, invoices))
-    );
+    return this.http
+      .get<Invoice[]>(this.dataUrl)
+      .pipe(tap((invoices) => saveToStorage(this.STORAGE_KEY, invoices)));
   }
 
-  getInvoiceById(id: string): Observable<Invoice | undefined> {
+  public getInvoiceById(id: string): Observable<Invoice | undefined> {
     const storedInvoices = loadFromStorage<Invoice[]>(this.STORAGE_KEY, []);
 
     if (storedInvoices.length > 0) {
-      return of(storedInvoices.find(invoice => invoice.id === id));
+      return of(storedInvoices.find((invoice) => invoice.id === id));
     }
 
     return this.http.get<Invoice[]>(this.dataUrl).pipe(
-      tap(invoices => saveToStorage(this.STORAGE_KEY, invoices)),
-      map(invoices => invoices.find(invoice => invoice.id === id))
+      tap((invoices) => saveToStorage(this.STORAGE_KEY, invoices)),
+      map((invoices) => invoices.find((invoice) => invoice.id === id)),
     );
   }
 
-  updateInvoice(invoice: Invoice): Observable<Invoice> {
-    return new Observable(subscriber => {
+  public updateInvoice(invoice: Invoice): Observable<Invoice> {
+    return new Observable((subscriber) => {
       const invoices = loadFromStorage<Invoice[]>(this.STORAGE_KEY, []);
-      const index = invoices.findIndex(inv => inv.id === invoice.id);
+      const index = invoices.findIndex((inv) => inv.id === invoice.id);
 
       if (index === -1) {
         subscriber.error(new Error('Invoice not found'));
@@ -52,7 +52,7 @@ export class DataService {
       const updatedInvoices = [
         ...invoices.slice(0, index),
         invoice,
-        ...invoices.slice(index + 1)
+        ...invoices.slice(index + 1),
       ];
 
       saveToStorage(this.STORAGE_KEY, updatedInvoices);
@@ -61,25 +61,27 @@ export class DataService {
     });
   }
 
-  deleteInvoice(id: string): Observable<string> {
-    return new Observable(subscriber => {
+  public deleteInvoice(id: string): Observable<string> {
+    return new Observable((subscriber) => {
       const invoices = loadFromStorage<Invoice[]>(this.STORAGE_KEY, []);
-      const index = invoices.findIndex(inv => inv.id === id);
+      const index = invoices.findIndex((inv) => inv.id === id);
 
       if (index === -1) {
         subscriber.error(new Error('Invoice not found'));
         return;
       }
 
-      const updatedInvoices = invoices.filter(inv => inv.id !== id);
+      const updatedInvoices = invoices.filter((inv) => inv.id !== id);
       saveToStorage(this.STORAGE_KEY, updatedInvoices);
       subscriber.next(id);
       subscriber.complete();
     });
   }
 
-  createInvoice(invoiceData: Omit<Invoice, 'id' | 'createdAt'>): Observable<Invoice> {
-    return new Observable(subscriber => {
+  public createInvoice(
+    invoiceData: Omit<Invoice, 'id' | 'createdAt'>,
+  ): Observable<Invoice> {
+    return new Observable((subscriber) => {
       const invoices = loadFromStorage(this.STORAGE_KEY, []);
 
       const newInvoice: Invoice = {
@@ -95,21 +97,21 @@ export class DataService {
           street: invoiceData.senderAddress.street,
           city: invoiceData.senderAddress.city,
           postCode: invoiceData.senderAddress.postCode,
-          country: invoiceData.senderAddress.country
+          country: invoiceData.senderAddress.country,
         },
         clientAddress: {
           street: invoiceData.clientAddress.street,
           city: invoiceData.clientAddress.city,
           postCode: invoiceData.clientAddress.postCode,
-          country: invoiceData.clientAddress.country
+          country: invoiceData.clientAddress.country,
         },
-        items: invoiceData.items.map(item => ({
+        items: invoiceData.items.map((item) => ({
           name: item.name,
           quantity: item.quantity,
           price: item.price,
-          total: item.total
+          total: item.total,
         })),
-        total: invoiceData.total
+        total: invoiceData.total,
       };
 
       const updatedInvoices = [...invoices, newInvoice];
