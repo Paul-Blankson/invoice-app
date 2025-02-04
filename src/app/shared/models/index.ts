@@ -11,6 +11,10 @@ export type IconName =
   | 'icon-check'
   | 'icon-delete'
   | 'icon-plus'
+  | 'icon-cross'
+  | 'icon-error'
+  | 'icon-warning'
+  | 'icon-info'
   | 'illustration-empty'
   | 'image-avatar'
   | 'logo';
