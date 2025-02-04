@@ -56,3 +56,12 @@ export interface InvoiceFormGroup {
   paymentDue: FormControl<string>;
   total: FormControl<number>;
 }
+
+export type ToastType = 'success' | 'info' | 'error' | 'warning';
+
+export interface Toast {
+  id: string;
+  message: string;
+  type: ToastType;
+  timeout?: number;
+}
