@@ -1,0 +1,26 @@
+<div class="toast-container">
+  @for (toast of toasts$ | async; track toast.id) {
+    <div
+      class="toast"
+      [ngClass]="toast.type"
+      [@toastAnimation]
+      (click)="removeToast(toast.id)"
+      (keydown)="onKeyDown($event, toast.id)"
+      role="alert"
+    >
+      <div class="toast-content">
+        <app-icon [name]="getIconName(toast.type)" />
+        <span class="message">{{ toast.message }}</span>
+      </div>
+      <button
+        class="close-button"
+        (click)="removeToast(toast.id)"
+        (keydown.enter)="removeToast(toast.id)"
+        (keydown.space)="removeToast(toast.id)"
+        aria-label="Close notification"
+      >
+        <app-icon name="icon-cross" />
+      </button>
+    </div>
+  }
+</div>
