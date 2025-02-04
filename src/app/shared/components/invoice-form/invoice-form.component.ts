@@ -21,6 +21,7 @@ import { emailValidator } from '../../validators/email.validator';
 import { noSpecialCharactersValidator } from '../../validators/special-characters.validator';
 import { InvoiceActions } from '../../../store/actions/invoice.actions';
 import { selectSelectedInvoice } from '../../../store/reducers/invoice.reducer';
+import { ToastService } from '../../../services/toast.service';
 
 @Component({
   selector: 'app-invoice-form',
@@ -58,7 +59,7 @@ export class InvoiceFormComponent implements OnInit {
   public errors: string[] = [];
   public showError = false;
 
-  constructor(private readonly fb: FormBuilder) {
+  constructor(private readonly fb: FormBuilder, private readonly toastService: ToastService) {
     this.initializeForm();
   }
 
@@ -233,8 +234,12 @@ export class InvoiceFormComponent implements OnInit {
     }
   }
 
-  onSubmit() {
-    if (!this.validateForm() || this.isSaving) {
+ public onSubmit() {
+    if (!this.validateForm()) {
+      this.toastService.warning('Please fill in all required fields');
+      return;
+    } else if(this.isSaving) {
+      this.toastService.info('Please wait saving in progress');
       return;
     }
 
@@ -257,6 +262,8 @@ export class InvoiceFormComponent implements OnInit {
       this.store.dispatch(InvoiceActions.createInvoice({ invoice: formData }));
       this.close.emit();
     }
+    this.toastService.success('Invoice saved successfully');
+    this.isSaving = false
   }
 
   onDiscard() {
