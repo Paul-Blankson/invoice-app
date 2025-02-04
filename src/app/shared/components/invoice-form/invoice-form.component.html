@@ -280,7 +280,8 @@
           textColor="primary-color"
           (press)="addItem()"
           (click)="addItem()"
-          (keydown)="addItem()"
+          (keydown.enter)="addItem()"
+          (keydown.space)="addItem()"
           class="add-item-btn"
           ariaLabel="Add new invoice item"
         />
@@ -314,7 +315,9 @@
           [text]="isSaving ? 'Saving...' : 'Save Changes'"
           (press)="onSubmit()"
           (click)="onSubmit()"
-          (keydown)="onSubmit()"
+          (keydown.enter)="onSubmit()"
+          (keydown.space)="onSubmit()"
+          [isdisabled]="isSaving"
           ariaLabel="Save changes to invoice"
         />
       </div>
@@ -333,7 +336,8 @@
         textColor="secondary-color"
         (press)="saveDraft()"
         (click)="saveDraft()"
-        (keydown)="saveDraft()"
+        (keydown.enter)="saveDraft()"
+        (keydown.space)="saveDraft()"
         ariaLabel="Save invoice as draft"
       />
 
@@ -342,7 +346,9 @@
         [text]="isSaving ? 'Saving...' : 'Save & Send'"
         (press)="onSubmit()"
         (click)="onSubmit()"
-        (keydown)="onSubmit()"
+        (keydown.enter)="onSubmit()"
+        (keydown.space)="onSubmit()"
+        [isdisabled]="isSaving"
         ariaLabel="Save and send invoice"
       />
     }
