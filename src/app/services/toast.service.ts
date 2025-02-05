@@ -6,7 +6,7 @@ import { Toast, ToastType } from '../models/services.type';
   providedIn: 'root',
 })
 export class ToastService {
-  private readonly toasts: BehaviorSubject<Toast[]> = new BehaviorSubject<
+  public readonly toasts: BehaviorSubject<Toast[]> = new BehaviorSubject<
     Toast[]
   >([]);
   public toasts$: Observable<Toast[]> = this.toasts.asObservable();
@@ -56,7 +56,7 @@ export class ToastService {
     this.show(message, 'warning', timeout);
   }
 
-  private generateId(): string {
+  public generateId(): string {
     return `toast-${Date.now()}-${Math.random().toString(36).substring(2, 9)}`;
   }
 }
