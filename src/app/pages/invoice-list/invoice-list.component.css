@@ -2,9 +2,11 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 32px;
-  max-width: 327px;
+  margin-top: 6rem;
+  margin-bottom: 32px;
+  max-width: 100%;
   height: 44px;
+  padding-inline: 1.5rem;
 }
 
 .invoice__header-text-container {
@@ -20,7 +22,8 @@
 }
 
 .invoice__list {
-  margin-top: 32px;
+  max-width: 100%;
+  padding-inline: 1.5rem;
 }
 
 .large__screens {
@@ -33,16 +36,12 @@
 
 @media screen and (min-width: 768px) {
   .invoice__header {
-    max-width: 672px;
     height: 59px;
+    margin-bottom: 56px;
   }
 
   .invoice__header-controls-container {
     gap: 2.5rem;
-  }
-
-  .invoice__list {
-    margin-top: 3.5rem;
   }
 
   .large__screens {
@@ -59,14 +58,11 @@
   .invoice__header {
     max-width: 730px;
     height: 59px;
+    margin-bottom: 65px;
   }
 
   .invoice__header-controls-container {
     gap: 2.5rem;
-  }
-
-  .invoice__list {
-    margin-top: 4.5rem;
   }
 
 }

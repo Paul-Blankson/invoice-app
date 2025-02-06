@@ -34,7 +34,7 @@ button {
 .btn2 {
   padding: 17px 23px 16px 24px;
   background-color: var(--color-primary-blue);
-  color: var(--white-color);
+  color: var(--color-soft-blue);
 }
 
 .btn2:hover {
