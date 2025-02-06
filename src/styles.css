@@ -49,6 +49,7 @@
   --select-option-text-color: var(--color-very-dark);
   --select-option-texthover-color: var(--color-primary-blue);
   --option-border-color: var(--color-light-gray);
+  --calender-icon-color: var(--color-soft-blue);
 }
 
 [data-theme="dark"] {
@@ -75,6 +76,7 @@
   --select-option-text-color: var(--color-light-gray);
   --select-option-texthover-color: var(--color-secondary-blue);
   --option-border-color: var(--color-dark-gray);
+  --calender-icon-color: var(--color-primary-blue);
 }
 
 @font-face {

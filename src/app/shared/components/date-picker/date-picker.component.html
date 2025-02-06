@@ -1,0 +1,69 @@
+<div class="date-picker"
+     [class.active]="isOpen"
+     [class.disabled]="control.disabled"
+     [class.error]="isInvalid"
+     appClickOutside
+     (clickOutside)="closeCalendar()">
+
+  @if (label) {
+    <label [for]="id" class="date-picker__label">
+      {{ label }}
+    </label>
+  }
+
+  <div class="date-picker__input-wrapper"
+       (click)="toggleCalendar()"
+      (keydown)="handleKeydown($event)">
+    <input
+      #inputElement
+      [id]="id"
+      [formControl]="control"
+      [value]="formattedDate"
+      [attr.placeholder]="placeholder"
+      [attr.aria-label]="ariaLabel"
+      readonly
+      [required]="required"
+      (blur)="onTouched()">
+    <app-icon
+      name="icon-calendar"
+      [class.active]="isOpen"
+      class="calendar-icon">
+    </app-icon>
+  </div>
+
+  @if (isOpen) {
+    <div class="calendar-dropdown">
+      <div class="calendar-header">
+        <button type="button" class="nav-button" (click)="previousMonth()">
+          <app-icon name="icon-arrow-left"></app-icon>
+        </button>
+       <app-headline [text]="currentMonthYear" variant="h3-sm"></app-headline>
+        <button type="button" class="nav-button" (click)="nextMonth()">
+          <app-icon name="icon-arrow-right"></app-icon>
+        </button>
+      </div>
+
+      <div class="calendar-grid">
+
+        <div class="days-grid">
+          @for (day of calendarDays; track day.id) {
+            <button
+              type="button"
+              class="day-button"
+              [class.other-month]="!day.isCurrentMonth"
+              [class.today]="day.isToday"
+              [class.selected]="day.isSelected"
+              (click)="selectDate(day)"
+              [disabled]="!day.isCurrentMonth">
+              {{ day.date }}
+            </button>
+          }
+        </div>
+      </div>
+    </div>
+  }
+
+  @if (isInvalid) {
+    <span class="error-message">{{ errorMessage }}</span>
+  }
+</div>

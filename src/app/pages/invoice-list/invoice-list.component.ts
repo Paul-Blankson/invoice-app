@@ -20,6 +20,7 @@ import { AppState } from '../../models/app.state';
 import { SideDrawerComponent } from '../../shared/components/side-drawer/side-drawer.component';
 import { TextFieldComponent } from '../../shared/components/text-field/text-field.component';
 import { DropdownComponent } from '../../shared/components/dropdown/dropdown.component';
+import { DatePickerComponent } from '../../shared/components/date-picker/date-picker.component';
 
 @Component({
   selector: 'app-invoice-list',
@@ -33,7 +34,8 @@ import { DropdownComponent } from '../../shared/components/dropdown/dropdown.com
     IconComponent,
     SideDrawerComponent,
     TextFieldComponent,
-    DropdownComponent
+    DropdownComponent,
+    DatePickerComponent
 ],
   templateUrl: './invoice-list.component.html',
   styleUrl: './invoice-list.component.css',
