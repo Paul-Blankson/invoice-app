@@ -1,18 +1,10 @@
-import {
-  Component,
-  EventEmitter,
-  forwardRef,
-  Input,
-  Output,
-} from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { TextFieldType, ValidationError } from '../../models';
+import { Component, forwardRef, Input } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR, } from '@angular/forms';
+import { InputFieldProps } from '../../models';
 
 @Component({
   selector: 'app-text-field',
   imports: [],
-  templateUrl: './text-field.component.html',
-  styleUrl: './text-field.component.css',
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -20,81 +12,46 @@ import { TextFieldType, ValidationError } from '../../models';
       multi: true,
     },
   ],
+  templateUrl: './text-field.component.html',
+  styleUrl: './text-field.component.css',
 })
 export class TextFieldComponent implements ControlValueAccessor {
-  @Input() label = '';
-  @Input() placeholder = '';
-  @Input() type: TextFieldType = 'text';
-  @Input() required = false;
-  @Input() disabled = false;
   @Input() id = `text-field-${Math.random().toString(36).slice(2, 11)}`;
+  @Input() props!: InputFieldProps;
 
-  @Output() blur = new EventEmitter<void>();
+  public value = '';
+  public isDisabled = false;
 
-  value = '';
-  touched = false;
-  private readonly emailRegex =
-    /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  public onChange: (value: string) => void = () => {};
+  public onTouched: () => void = () => {};
 
-  get error(): string {
-    const errorType = this.getValidationError();
-
-    switch (errorType) {
-      case 'required':
-        return "can't be empty";
-      case 'email':
-        return 'invalid email format';
-      default:
-        return '';
-    }
+  public writeValue(obj: string): void {
+    this.value = obj || '';
   }
 
-  private getValidationError(): ValidationError {
-    if (this.required && this.touched && !this.value) {
-      return 'required';
-    }
-
-    if (this.type === 'email' && this.value && !this.isValidEmail(this.value)) {
-      return 'email';
-    }
-
-    return null;
-  }
-
-  private isValidEmail(email: string): boolean {
-    return this.emailRegex.test(email);
-  }
-
-  private onChange: (value: string) => void = () => {};
-  private onTouched: () => void = () => {};
-
-  writeValue(value: string): void {
-    this.value = value;
-  }
-
-  registerOnChange(fn: (value: string) => void): void {
+  public registerOnChange(fn: (value: string) => void): void {
     this.onChange = fn;
   }
 
-  registerOnTouched(fn: () => void): void {
+  public registerOnTouched(fn: () => void): void {
     this.onTouched = fn;
   }
 
-  setDisabledState(isDisabled: boolean): void {
-    this.disabled = isDisabled;
+  public setDisabledState?(isDisabled: boolean): void {
+    this.isDisabled = isDisabled;
   }
 
-  onInput(event: Event): void {
-    const target = event.target as HTMLInputElement;
-    this.value = target.value;
-    this.onChange(this.value);
+  public onInputChange(event: Event): void {
+    const inputValue = (event.target as HTMLInputElement).value;
+    this.value = inputValue;
+    this.onChange(inputValue);
   }
 
-  onBlur(): void {
-    if (!this.touched) {
-      this.touched = true;
-      this.onTouched();
-    }
-    this.blur.emit();
+  get ariaInvalid(): boolean {
+    return this.props.isInvalid!;
+  }
+
+  get ariaDescribedBy(): string {
+    return this.props.isInvalid ? `${this.id}-error` : '';
   }
 }

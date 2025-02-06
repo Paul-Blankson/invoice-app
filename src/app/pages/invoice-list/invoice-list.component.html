@@ -86,22 +86,11 @@
   }
 </div>
 
-<app-side-drawer [isDrawerOpen]="isSideDrawerOpen" (close)="onDrawerClose()">
-  <app-text-field
-    label="Client's Name"
-    placeholder="e.g. Alex Smith"
-    [required]="false"
-    type="text"
-  ></app-text-field>
-
-  <app-dropdown
-    label="Payment Terms"
-    [options]="paymentTermsOptions"
-    [required]="true"
-    (selectionChange)="onPaymentTermsChange($event)"
-  />
-  <app-date-picker
-    label="Invoice Date"
-    [required]="false"
-  ></app-date-picker>
+<app-side-drawer
+  [isDrawerOpen]="isSideDrawerOpen"
+  title="New Invoice"
+  [isEditing]="false"
+  (close)="onDrawerClose()"
+>
+  <app-invoice-form [isEditMode]="false" (close)="onDrawerClose()" />
 </app-side-drawer>

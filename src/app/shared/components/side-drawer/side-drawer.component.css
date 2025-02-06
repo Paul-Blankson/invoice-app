@@ -41,8 +41,26 @@
   background-color: var(--side-drawer-bg-color);
   transform: translateX(-100%);
   transition: transform 0.3s ease-in-out;
-  display: flex;
-  flex-direction: column;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  /* For Firefox */
+  scrollbar-width: thin;
+  scrollbar-color: var(--text-field-border-color) transparent;
+}
+
+/* Customizing scrollbar for webkit browsers */
+.side-drawer__content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.side-drawer__content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.side-drawer__content::-webkit-scrollbar-thumb {
+  background-color: var(--text-field-border-color);
+  border-radius: 4px;
+  height: 112px;
 }
 
 .side-drawer__container--open .side-drawer__content {
@@ -67,9 +85,19 @@
   color: inherit;
 }
 
+.side-drawer__edit-container {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.side-drawer__id-container {
+  display: flex;
+  align-items: center;
+}
+
 .side-drawer__body {
   flex: 1;
-  overflow-y: auto;
 }
 
 @media screen and (min-width: 768px) {

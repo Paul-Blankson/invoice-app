@@ -40,6 +40,12 @@ import { HeadingLevel } from '../../models';
         line-height: 15px;
         letter-spacing: -0.25px;
       }
+      .primary-color {
+        color: var(--primary-text-color);
+      }
+      .secondary-color {
+        color: var(--secondary-text-color);
+      }
       .soft-blue {
         color: var(--color-soft-blue);
       }
@@ -74,7 +80,7 @@ export class HeadlineComponent {
   @Input() className?: string;
   @Input() text: string = '';
 
-  getClasses(): string {
+ public getClasses(): string {
     return `headline ${this.level} ${this.className ?? ''}`.trim();
   }
 }

@@ -4,8 +4,6 @@ import { Invoice } from './services.type';
 export interface AppState {
   invoice: InvoiceState;
   theme: ThemeState;
-  drawer: DrawerState;
-
 }
 
 export interface InvoiceState {
@@ -30,12 +28,4 @@ export const initialInvoiceState: InvoiceState = {
 
 export const initialThemeState: ThemeState = {
   theme: 'light'
-};
-
-export interface DrawerState {
-  isOpen: boolean;
-}
-
-export const initialState: DrawerState = {
-  isOpen: false
 };

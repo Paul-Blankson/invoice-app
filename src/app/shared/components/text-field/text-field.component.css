@@ -20,7 +20,7 @@
   transition: color 0.2s ease;
 }
 
-.text-field__label--required {
+.text-field__label--error {
   color: var(--color-primary-red);
   font-weight: 600;
   font-size: 0.75rem;

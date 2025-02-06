@@ -1,10 +1,4 @@
-import {
-  Component,
-  Input,
-  forwardRef,
-  ElementRef,
-  ViewChild,
-} from '@angular/core';
+import { Component, Input, forwardRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
   ControlValueAccessor,
@@ -43,45 +37,42 @@ import {
   styleUrls: ['./date-picker.component.css'],
 })
 export class DatePickerComponent implements ControlValueAccessor {
-  @Input() id: string = '';
-  @Input() label: string = '';
-  @Input() required: boolean = false;
-  @Input() placeholder: string = 'Select date';
-  @Input() errorMessage: string = '';
-  @Input() ariaLabel: string = '';
+  @Input() id = '';
+  @Input() label = '';
+  @Input() placeholder = 'Select date';
+  @Input() errorMessage = '';
+  @Input() ariaLabel = '';
 
-  @ViewChild('inputElement') inputElement!: ElementRef<HTMLInputElement>;
+  public isOpen = false;
+  public currentDate: Date = new Date();
+  public selectedDate: Date | null = null;
+  public calendarDays: CalendarDay[] = [];
 
-  control: FormControl<DateValue> = new FormControl<DateValue>('', {
+  public control: FormControl<DateValue> = new FormControl<DateValue>('', {
     nonNullable: false,
   });
-  isOpen: boolean = false;
-  currentDate: Date = new Date();
-  selectedDate: Date | null = null;
-  weekDays: string[] = ['S', 'M', 'T', 'W', 'Th', 'F', 'S'];
-  calendarDays: CalendarDay[] = [];
 
   constructor() {
     this.generateCalendar();
   }
 
-  get formattedDate(): string {
+  public get formattedDate(): string {
     if (!this.selectedDate) return '';
     return this.formatDate(this.selectedDate);
   }
 
-  get currentMonthYear(): string {
+  public get currentMonthYear(): string {
     return this.currentDate.toLocaleString('default', {
       month: 'short',
       year: 'numeric',
     });
   }
 
-  get isInvalid(): boolean {
+  public get isInvalid(): boolean {
     return Boolean(this.control.touched && this.control.errors);
   }
 
-  closeCalendar(): void {
+  public closeCalendar(): void {
     this.isOpen = false;
   }
 
@@ -89,7 +80,7 @@ export class DatePickerComponent implements ControlValueAccessor {
     this.generateCalendar();
   }
 
-  handleKeydown(event: KeyboardEvent): void {
+  public handleKeydown(event: KeyboardEvent): void {
     if (event.key === 'Enter' || event.key === ' ') {
       this.toggleCalendar();
     }
@@ -103,14 +94,14 @@ export class DatePickerComponent implements ControlValueAccessor {
     this.control.disable();
   }
 
-  setDisabledState(isDisabled: boolean): void {
+  public setDisabledState(isDisabled: boolean): void {
     if (isDisabled) {
       this.disableControl();
     }
     this.enableControl();
   }
 
-  toggleCalendar(): void {
+  public toggleCalendar(): void {
     if (this.control.disabled) return;
 
     this.generateCalendar();
@@ -135,7 +126,7 @@ export class DatePickerComponent implements ControlValueAccessor {
     }
   }
 
-  generateCalendar(): void {
+  public generateCalendar(): void {
     const year = this.currentDate.getFullYear();
     const month = this.currentDate.getMonth();
 
@@ -187,7 +178,7 @@ export class DatePickerComponent implements ControlValueAccessor {
     }
   }
 
-  selectDate(day: CalendarDay): void {
+  public selectDate(day: CalendarDay): void {
     if (!day.isCurrentMonth) return;
 
     const selectedDate = new Date(
@@ -204,7 +195,7 @@ export class DatePickerComponent implements ControlValueAccessor {
     this.generateCalendar();
   }
 
-  previousMonth(): void {
+  public previousMonth(): void {
     this.currentDate = new Date(
       this.currentDate.getFullYear(),
       this.currentDate.getMonth() - 1,
@@ -212,7 +203,7 @@ export class DatePickerComponent implements ControlValueAccessor {
     this.generateCalendar();
   }
 
-  nextMonth(): void {
+  public nextMonth(): void {
     this.currentDate = new Date(
       this.currentDate.getFullYear(),
       this.currentDate.getMonth() + 1,
@@ -236,22 +227,21 @@ export class DatePickerComponent implements ControlValueAccessor {
     );
   }
 
-  // ControlValueAccessor implementation
-  onChange: OnChangeCallback = () => {};
-  onTouched: OnTouchedCallback = () => {};
+  public onChange: OnChangeCallback = () => {};
+  public onTouched: OnTouchedCallback = () => {};
 
-  writeValue(value: DateValue): void {
+  public writeValue(value: DateValue): void {
     if (value) {
       this.selectedDate = new Date(value);
       this.control.setValue(this.formatDate(this.selectedDate));
     }
   }
 
-  registerOnChange(fn: OnChangeCallback): void {
+  public registerOnChange(fn: OnChangeCallback): void {
     this.onChange = fn;
   }
 
-  registerOnTouched(fn: OnTouchedCallback): void {
+  public registerOnTouched(fn: OnTouchedCallback): void {
     this.onTouched = fn;
   }
 }

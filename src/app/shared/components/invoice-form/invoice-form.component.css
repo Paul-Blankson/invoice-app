@@ -1,0 +1,173 @@
+.invoice-form {
+  height: 100%;
+}
+
+.invoice-form .form-section__title {
+  color: var(--color-primary-blue);
+  font-size: 0.75rem;
+  line-height: 15px;
+  letter-spacing: -0.25px;
+  font-weight: 700;
+  margin-bottom: 24px;
+}
+
+.invoice-form .form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.invoice-form .address-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+
+.form-section__bill-from {
+  margin-bottom: 40px;
+}
+
+.form-group__address {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.form-section__bill-to {
+  margin-bottom: 40px;
+}
+
+.invoice-form .invoice-details-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.form-section__invoice-details {
+  margin-bottom: 40px;
+}
+
+.invoice-form .items-list {
+  margin-bottom: 24px;
+}
+
+.item-row {
+  margin-top: 24px;
+}
+
+.invoice-form .item-row {
+  display: grid;
+  grid-template-areas:
+    'name name name name'
+    'qty price total delete';
+  grid-template-columns: 70px 1fr 1fr auto;
+  gap: 16px;
+  margin-bottom: 48px;
+}
+
+.invoice-form .item-row app-text-field:first-child {
+  grid-area: name;
+}
+
+.invoice-form .item-row app-text-field:nth-child(2) {
+  grid-area: qty;
+}
+
+.invoice-form .item-row app-text-field:nth-child(3) {
+  grid-area: price;
+}
+
+.invoice-form .item-row .item-total {
+  grid-area: total;
+}
+
+.invoice-form .item-row .delete-btn {
+  grid-area: delete;
+  align-self: center;
+}
+
+.delete-btn {
+  border: none;
+  background: none;
+  margin-top: 24px;
+}
+
+.item-total {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.invoice-form .form-actions {
+  margin-top: 47px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.form-actions__edit-btn {
+  display: flex;
+  gap: 8px;
+  margin-left: auto;
+}
+
+.form-actions:not(:has(.form-actions__edit-btn)) {
+  justify-content: center;
+  gap: 7px;
+}
+
+.delete-btn:hover {
+  cursor: pointer;
+}
+
+.error-container {
+  margin-top: 33px;
+  color: var(--color-primary-red);
+  font-size: 0.625rem;
+  font-weight: 600;
+  line-height: 1.5;
+  letter-spacing: -0.013rem;
+}
+
+@media screen and (min-width: 768px) {
+  .invoice-form .address-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .invoice-form .invoice-details-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .invoice-form .item-row {
+    grid-template-areas: unset;
+    grid-template-columns: 3fr 65px 100px 45px 65px;
+    gap: 16px;
+    align-items: start;
+  }
+
+  .invoice-form .item-row app-text-field:first-child,
+  .invoice-form .item-row app-text-field:nth-child(2),
+  .invoice-form .item-row app-text-field:nth-child(3),
+  .invoice-form .item-row .item-total,
+  .invoice-form .item-row .delete-btn {
+    grid-area: unset;
+  }
+
+  .form-actions:not(:has(.form-actions__edit-btn)) {
+    justify-content: space-between;
+  }
+
+  .form-actions:not(:has(.form-actions__edit-btn)) app-button:nth-child(2),
+  .form-actions:not(:has(.form-actions__edit-btn)) app-button:nth-child(3) {
+    margin-left: auto;
+  }
+
+  .form-actions:not(:has(.form-actions__edit-btn)) app-button:nth-child(3) {
+    margin-left: 7px;
+  }
+
+  .form-actions__edit-btn {
+    gap: 8px;
+  }
+}

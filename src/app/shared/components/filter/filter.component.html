@@ -1,4 +1,4 @@
-<div class="filter">
+<div class="filter" appClickOutside (clickOutside)="isOpen = false">
   <button class="filter__header-button" (click)="toggleFilter()">
     <app-headline level="h3-sm" [text]="label" />
     <app-icon [name]="isOpen ? 'icon-arrow-up' : 'icon-arrow-down'" />
@@ -16,7 +16,7 @@
             [checked]="isSelected(option.value)"
             (change)="toggleOption(option.value)"
           />
-          <app-headline level="h3-sm" [text]="option.title"/>
+          <app-headline level="h3-sm" [text]="option.title" />
         </label>
       }
     </div>

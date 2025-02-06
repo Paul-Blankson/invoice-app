@@ -24,7 +24,7 @@ import { RouterLink } from '@angular/router';
 export class InvoiceCardComponent {
   @Input({ required: true }) invoice!: Invoice;
 
-  getBadgeVariant(status: string): BadgeVariant {
+  public getBadgeVariant(status: string): BadgeVariant {
     const statusMap: Record<string, BadgeVariant> = {
       paid: 'paid',
       pending: 'pending',

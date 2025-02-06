@@ -15,14 +15,11 @@
        (click)="toggleCalendar()"
       (keydown)="handleKeydown($event)">
     <input
-      #inputElement
       [id]="id"
-      [formControl]="control"
       [value]="formattedDate"
       [attr.placeholder]="placeholder"
       [attr.aria-label]="ariaLabel"
       readonly
-      [required]="required"
       (blur)="onTouched()">
     <app-icon
       name="icon-calendar"

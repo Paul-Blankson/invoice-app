@@ -1,0 +1,350 @@
+<form
+  [formGroup]="form"
+  class="invoice-form"
+  [class.loading]="false"
+>
+  <div class="form-content">
+    <!-- Bill From Section -->
+    <section class="form-section form-section__bill-from">
+      <h2 class="form-section__title">Bill From</h2>
+      <div class="form-group" formGroupName="senderAddress">
+        <app-text-field
+          id="sender-street"
+          formControlName="street"
+          [props]="{
+            type: 'text',
+            label: 'Street Address',
+            isInvalid:
+              form.get('senderAddress.street')?.invalid &&
+              form.get('senderAddress.street')?.touched,
+            placeholder: '',
+            errorMessage: getErrorMessage('senderAddress.street'),
+          }"
+        />
+
+        <div class="address-grid">
+          <app-text-field
+            id="sender-city"
+            formControlName="city"
+            [props]="{
+              type: 'text',
+              label: 'City',
+              isInvalid:
+                form.get('senderAddress.city')?.invalid &&
+                form.get('senderAddress.city')?.touched,
+              placeholder: '',
+              errorMessage: getErrorMessage('senderAddress.city'),
+            }"
+          />
+
+          <app-text-field
+            id="sender-postcode"
+            formControlName="postCode"
+            [props]="{
+              type: 'text',
+              label: 'Post Code',
+              isInvalid:
+                form.get('senderAddress.postCode')?.invalid &&
+                form.get('senderAddress.postCode')?.touched,
+              placeholder: '',
+              errorMessage: getErrorMessage('senderAddress.postCode'),
+            }"
+          />
+
+          <app-text-field
+            id="sender-country"
+            formControlName="country"
+            [props]="{
+              type: 'text',
+              label: 'Country',
+              isInvalid:
+                form.get('senderAddress.country')?.invalid &&
+                form.get('senderAddress.country')?.touched,
+              placeholder: '',
+              errorMessage: getErrorMessage('senderAddress.country'),
+            }"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- Bill To Section -->
+    <section class="form-section form-section__bill-to">
+      <h2 class="form-section__title">Bill To</h2>
+      <div class="form-group">
+        <app-text-field
+          id="client-name"
+          formControlName="clientName"
+          [props]="{
+            type: 'text',
+            label: 'Client\'s Name',
+            isInvalid:
+              form.get('clientName')?.invalid &&
+              form.get('clientName')?.touched,
+            placeholder: '',
+            errorMessage: getErrorMessage('clientName'),
+          }"
+        />
+
+        <app-text-field
+          id="client-email"
+          formControlName="clientEmail"
+          [props]="{
+            type: 'email',
+            label: 'Client\'s Email',
+            isInvalid:
+              form.get('clientEmail')?.invalid &&
+              form.get('clientEmail')?.touched,
+            placeholder: 'e.g. email@example.com',
+            errorMessage: getErrorMessage('clientEmail'),
+          }"
+        />
+
+        <div formGroupName="clientAddress" class="form-group__address">
+          <app-text-field
+            id="client-street"
+            formControlName="street"
+            [props]="{
+              type: 'text',
+              label: 'Street Address',
+              isInvalid:
+                form.get('clientAddress.street')?.invalid &&
+                form.get('clientAddress.street')?.touched,
+              placeholder: '',
+              errorMessage: getErrorMessage('clientAddress.street'),
+            }"
+          />
+
+          <div class="address-grid">
+            <app-text-field
+              id="client-city"
+              formControlName="city"
+              [props]="{
+                type: 'text',
+                label: 'City',
+                isInvalid:
+                  form.get('clientAddress.city')?.invalid &&
+                  form.get('clientAddress.city')?.touched,
+                placeholder: '',
+                errorMessage: getErrorMessage('clientAddress.city'),
+              }"
+            />
+
+            <app-text-field
+              id="client-postcode"
+              formControlName="postCode"
+              [props]="{
+                type: 'text',
+                label: 'Post Code',
+                isInvalid:
+                  form.get('clientAddress.postCode')?.invalid &&
+                  form.get('clientAddress.postCode')?.touched,
+                placeholder: '',
+                errorMessage: getErrorMessage('clientAddress.postCode'),
+              }"
+            />
+
+            <app-text-field
+              id="client-country"
+              formControlName="country"
+              [props]="{
+                type: 'text',
+                label: 'Country',
+                isInvalid:
+                  form.get('clientAddress.country')?.invalid &&
+                  form.get('clientAddress.country')?.touched,
+                placeholder: '',
+                errorMessage: getErrorMessage('clientAddress.country'),
+              }"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Invoice Details -->
+    <section class="form-section form-section__invoice-details">
+      <div class="invoice-details-grid">
+        <app-date-picker
+          id="invoice-date"
+          label="Invoice Date"
+          formControlName="paymentDue"
+        />
+
+        <app-dropdown
+          id="paymentTerms"
+          formControlName="paymentTerms"
+          [options]="paymentTermsOptions"
+          [props]="{
+            type: 'text',
+            label: 'Payment Terms',
+            isInvalid:
+              form.get('paymentTerms')?.invalid &&
+              form.get('paymentTerms')?.touched,
+            placeholder: 'Select payment terms',
+            errorMessage: getErrorMessage('paymentTerms'),
+          }"
+        />
+      </div>
+
+      <app-text-field
+        id="description"
+        formControlName="description"
+        [props]="{
+          type: 'text',
+          label: 'Project Description',
+          isInvalid:
+            form.get('description')?.invalid &&
+            form.get('description')?.touched,
+          placeholder: 'e.g. Graphic Design Service',
+        }"
+      />
+    </section>
+
+    <!-- Item List -->
+    <section class="form-section form-section__items">
+      <h2 class="section-title">Item List</h2>
+      <div formArrayName="items" class="items-list">
+        @for (item of items.controls; let i = $index; track i) {
+          <div [formGroupName]="i" class="item-row">
+            <app-text-field
+              [id]="'item-name-' + i"
+              formControlName="name"
+              [props]="{
+                type: 'text',
+                label: 'Item Name',
+                isInvalid:
+                  form.get('items.' + i + '.name')?.invalid &&
+                  form.get('items.' + i + '.name')?.touched,
+                placeholder: '',
+                errorMessage: getErrorMessage('name'),
+              }"
+            />
+
+            <app-text-field
+              [id]="'item-qty-' + i"
+              formControlName="quantity"
+              [props]="{
+                type: 'number',
+                label: 'QTY.',
+                isInvalid:
+                  form.get('items.' + i + '.quantity')?.invalid &&
+                  form.get('items.' + i + '.quantity')?.touched,
+                placeholder: '',
+                errorMessage: getErrorMessage('quantity'),
+              }"
+            />
+
+            <app-text-field
+              [id]="'item-price-' + i"
+              formControlName="price"
+              [props]="{
+                type: 'number',
+                label: 'Price',
+                isInvalid:
+                  form.get('items.' + i + '.price')?.invalid &&
+                  form.get('items.' + i + '.price')?.touched,
+                placeholder: '',
+                errorMessage: getErrorMessage('price'),
+              }"
+            />
+
+            <div class="form-field item-total">
+              <app-text
+                variant="span"
+                text="Total"
+                className="large primary-color"
+              />
+              <app-headline
+                [id]="'item-total-' + i"
+                [text]="
+                  (calculateItemTotal(i)
+                    | currency: 'GBP' : 'symbol-narrow' : '1.2-2')!.replace('£', '£ ')"
+                level="h3-sm"
+                className="secondary-color"
+              />
+            </div>
+
+            @if (items.length > 1) {
+              <button type="button" class="delete-btn" (click)="removeItem(i)">
+                <app-icon name="icon-delete" class="delete-icon" />
+              </button>
+            }
+          </div>
+        }
+      </div>
+
+      <div class="add-item-wrapper">
+        <app-button
+          btnVariant="btn6"
+          textColor="primary-color"
+          (press)="addItem()"
+          (click)="addItem()"
+          (keydown)="addItem()"
+          class="add-item-btn"
+          ariaLabel="Add new invoice item"
+        />
+      </div>
+      @if (showError) {
+        <div class="error-container">
+          <ul>
+            @for (err of errors; track err) {
+              <li class="error_required">{{ err }}</li>
+            }
+          </ul>
+        </div>
+      }
+    </section>
+  </div>
+
+  <!-- Form Actions -->
+  <footer class="form-actions">
+    @if (isEditMode) {
+      <div class="form-actions__edit-btn">
+        <app-button
+          btnVariant="btn3"
+          textColor="primary-color"
+          text="Cancel"
+          [isdisabled]="isSaving"
+          ariaLabel="Cancel editing invoice"
+        />
+
+        <app-button
+          btnVariant="btn2"
+          [text]="isSaving ? 'Saving...' : 'Save Changes'"
+          (press)="onSubmit()"
+          (click)="onSubmit()"
+          (keydown)="onSubmit()"
+          ariaLabel="Save changes to invoice"
+        />
+      </div>
+    } @else {
+      <app-button
+        btnVariant="btn3"
+        textColor="primary-color"
+        text="Discard"
+        [isdisabled]="isSaving"
+        ariaLabel="Discard new invoice"
+      />
+
+      <app-button
+        btnVariant="btn4"
+        [text]="isSaving ? 'Saving...' : 'Save as Draft'"
+        textColor="secondary-color"
+        (press)="saveDraft()"
+        (click)="saveDraft()"
+        (keydown)="saveDraft()"
+        ariaLabel="Save invoice as draft"
+      />
+
+      <app-button
+        btnVariant="btn2"
+        [text]="isSaving ? 'Saving...' : 'Save & Send'"
+        (press)="onSubmit()"
+        (click)="onSubmit()"
+        (keydown)="onSubmit()"
+        ariaLabel="Save and send invoice"
+      />
+    }
+  </footer>
+</form>

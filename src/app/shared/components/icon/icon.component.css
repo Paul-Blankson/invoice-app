@@ -2,12 +2,14 @@
   display: inline-block;
 }
 
-.icon-moon, .icon-sun {
+.icon-moon,
+.icon-sun {
   width: 20px;
   height: 20px;
 }
 
-.icon-arrow-left, .icon-arrow-right {
+.icon-arrow-left,
+.icon-arrow-right {
   height: 8.46px;
   width: 8.46px;
 }
@@ -32,6 +34,12 @@
   height: 12.44px;
 }
 
+.icon-delete:hover {
+  filter: brightness(0) saturate(100%) invert(71%) sepia(51%) saturate(6792%)
+    hue-rotate(326deg) brightness(98%) contrast(89%);
+    cursor: pointer;
+}
+
 .icon-plus {
   width: 10px;
   height: 10px;
@@ -49,19 +57,19 @@
 }
 
 .logo {
-  width: 28px ;
+  width: 28px;
   height: 27.58px;
 }
 
 @media screen and (min-width: 768px) {
   .illustration-empty {
     width: 241.34px;
-    height: 200px ;
+    height: 200px;
   }
 
   .logo {
-    width: 31px ;
-    height: 30.76px ;
+    width: 31px;
+    height: 30.76px;
   }
 }
 
@@ -72,7 +80,7 @@
   }
 
   .logo {
-    width: 40px ;
+    width: 40px;
     height: 40px;
   }
 

@@ -9,7 +9,17 @@
         <app-icon name="icon-arrow-left" class="side-drawer__back-icon" />
         <app-headline level="h3-sm" text="Go back" />
       </button>
-      <app-headline level="h1" [text]="title" class="side-drawer__title" />
+      @if (isEditing) {
+        <div class="side-drawer__edit-container">
+          <app-headline level="h2" text="Edit " />
+          <div class="side-drawer__id-container">
+            <app-headline level="h2" text="#" className="soft-blue" />
+            <app-headline level="h2" [text]="title" />
+          </div>
+        </div>
+      } @else {
+        <app-headline level="h2" [text]="title" class="side-drawer__title" />
+      }
     </div>
     <div
       class="side-drawer__body"

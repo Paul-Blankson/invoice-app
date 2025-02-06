@@ -1,48 +1,59 @@
-<div class="dropdown" [class.active]="isOpen" appClickOutside (clickOutside)="closeDropdown()">
-  @if (label) {
-    <label class="dropdown__label" for="dropdown">
-      {{ label }}
-      @if (required) {
-        <span class="required">*</span>
-      }
-    </label>
-  }
+<div
+  class="dropdown"
+  [class.dropdown--error]="props.isInvalid"
+  [class.dropdown--disabled]="isDisabled"
+  appClickOutside
+  (clickOutside)="closeDropdown()"
+>
+  <div class="dropdown__header">
+    @if (props.label) {
+      <label
+        [for]="id"
+        class="dropdown__label"
+        [class.dropdown__label--error]="props.isInvalid"
+      >
+        {{ props.label }}
+      </label>
+    }
+    @if (props.isInvalid && props.errorMessage) {
+      <span [id]="id + '-error'" class="dropdown__error" role="alert">
+        {{ props.errorMessage }}
+      </span>
+    }
+  </div>
 
   <button
+    [id]="id"
     type="button"
     class="dropdown__toggle"
-    [class.error]="showError"
     [attr.aria-expanded]="isOpen"
-    [attr.aria-label]="label"
+    [attr.aria-invalid]="props.isInvalid"
+    [attr.aria-describedby]="props.isInvalid ? id + '-error' : null"
     (click)="toggleDropdown()"
-    [disabled]="control?.disabled">
+    [disabled]="isDisabled"
+  >
     <span class="dropdown__selected">{{ displayValue }}</span>
-    <app-icon
-      name="icon-arrow-down"
-      [class.rotate]="isOpen"
-      />
+    <app-icon name="icon-arrow-down" [class.rotate]="isOpen" />
   </button>
 
   @if (isOpen) {
-    <div class="dropdown__menu" role="listbox">
+    <div class="dropdown__menu" role="listbox" [attr.aria-labelledby]="id">
       @for (option of options; track option.value) {
         <option
           class="dropdown__option"
-          [class.selected]="option.value === control?.value"
+          [class.selected]="option.value === value"
           [class.disabled]="option.disabled"
-          [attr.aria-selected]="option.value === control?.value"
+          [attr.aria-selected]="option.value === value"
           (click)="selectOption(option)"
-          (keydown)="handleKeyDown($event)">
+          (keydown)="handleKeyDown($event)"
+          tabindex="0"
+        >
           {{ option.label }}
-          @if (option.value === control?.value) {
+          @if (option.value === value) {
             <app-icon name="icon-check" />
           }
         </option>
       }
     </div>
-  }
-
-  @if (showError) {
-    <span class="error-message">{{ error }}</span>
   }
 </div>
