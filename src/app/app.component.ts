@@ -7,10 +7,11 @@ import { Store } from '@ngrx/store';
 import { AppState } from './models/app.state';
 import { selectTheme } from './store/reducers/theme.reducer';
 import { Observable } from 'rxjs';
+import { ToastContainerComponent } from "./shared/components/toast-container/toast-container.component";
 
 @Component({
   selector: 'app-root',
-  imports: [CommonModule, RouterOutlet, IconComponent, ThemeTogglerComponent],
+  imports: [CommonModule, RouterOutlet, IconComponent, ThemeTogglerComponent, ToastContainerComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

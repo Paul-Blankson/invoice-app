@@ -31,7 +31,11 @@ export class IconComponent {
       'icon-calendar': 16,
       'icon-check': 10,
       'icon-delete': 11,
-      'icon-plus': 10,
+      'icon-plus': 11,
+      'icon-cross': 15,
+      'icon-error': 15,
+      'icon-info': 15,
+      'icon-warning': 15,
       'image-avatar': 40,
       'illustration-empty': 242,
       'logo': 40
@@ -51,6 +55,10 @@ export class IconComponent {
       'icon-check': 8,
       'icon-delete': 13,
       'icon-plus': 10,
+      'icon-cross': 15,
+      'icon-error': 15,
+      'icon-info': 15,
+      'icon-warning': 15,
       'image-avatar': 40,
       'illustration-empty': 200,
       'logo': 40

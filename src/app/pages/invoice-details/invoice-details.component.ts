@@ -19,6 +19,7 @@ import { DialogComponent } from '../../shared/components/dialog/dialog.component
 import { DeleteCardComponent } from '../../shared/components/delete-card/delete-card.component';
 import { SideDrawerComponent } from "../../shared/components/side-drawer/side-drawer.component";
 import { InvoiceFormComponent } from "../../shared/components/invoice-form/invoice-form.component";
+import { ToastService } from '../../services/toast.service';
 @Component({
   selector: 'app-invoice-details',
   imports: [
@@ -47,7 +48,7 @@ export class InvoiceDetailsComponent implements OnInit {
   public isDeleteDialogOpen: boolean = false;
   public isSideDrawerOpen: boolean = false;
 
-  constructor() {
+  constructor(private readonly toastService: ToastService) {
     this.invoice$ = this.store.select(selectSelectedInvoice);
     this.loading$ = this.store.select(selectLoading);
   }
@@ -74,6 +75,7 @@ export class InvoiceDetailsComponent implements OnInit {
         InvoiceActions.editInvoice({ invoice: updatedInvoice }),
       );
       this.store.dispatch(InvoiceActions.loadInvoiceById({ id: invoice.id }));
+      this.toastService.success(`Invoice ${invoice.id} marked as paid`);
     }
   }
 
@@ -89,6 +91,7 @@ export class InvoiceDetailsComponent implements OnInit {
     this.store.dispatch(InvoiceActions.deleteInvoice({ id: invoice.id }));
     this.closeDeleteDialog();
     this.location.back();
+    this.toastService.success(`Invoice ${invoice.id} deleted`);
   }
 
   public toggleDrawer() {
