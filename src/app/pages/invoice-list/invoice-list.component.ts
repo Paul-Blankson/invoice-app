@@ -15,9 +15,10 @@ import {
 } from '../../store/reducers/invoice.reducer';
 import { InvoiceActions } from '../../store/actions/invoice.actions';
 import { BadgeVariant, FilterOption } from '../../shared/models';
-import { IconComponent } from "../../shared/components/icon/icon.component";
+import { IconComponent } from '../../shared/components/icon/icon.component';
 import { AppState } from '../../models/app.state';
-import { SideDrawerComponent } from "../../shared/components/side-drawer/side-drawer.component";
+import { SideDrawerComponent } from '../../shared/components/side-drawer/side-drawer.component';
+import { TextFieldComponent } from '../../shared/components/text-field/text-field.component';
 
 @Component({
   selector: 'app-invoice-list',
@@ -29,8 +30,9 @@ import { SideDrawerComponent } from "../../shared/components/side-drawer/side-dr
     ButtonComponent,
     InvoiceCardComponent,
     IconComponent,
-    SideDrawerComponent
-],
+    SideDrawerComponent,
+    TextFieldComponent,
+  ],
   templateUrl: './invoice-list.component.html',
   styleUrl: './invoice-list.component.css',
 })
@@ -61,9 +63,7 @@ export class InvoiceListComponent implements OnInit {
         if (!statuses || statuses.length === 0) {
           return invoices;
         }
-        return invoices.filter((invoice) =>
-          statuses.includes(invoice.status)
-        );
+        return invoices.filter((invoice) => statuses.includes(invoice.status));
       }),
     );
 
@@ -77,7 +77,9 @@ export class InvoiceListComponent implements OnInit {
   }
 
   onFilterChange(selectedStatuses: BadgeVariant[]): void {
-    this.store.dispatch(InvoiceActions.setFilterStatus({ statuses: selectedStatuses }));
+    this.store.dispatch(
+      InvoiceActions.setFilterStatus({ statuses: selectedStatuses }),
+    );
   }
 
   toggleDrawer() {
