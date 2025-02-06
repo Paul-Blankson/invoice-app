@@ -1,0 +1,37 @@
+<a [routerLink]="'invoice/' + invoice.id"  class="invoice__card-container small__screen">
+  <div class="invoice__header-text-container">
+    <div class="invoice__header-id-container">
+      <app-headline level="h3-sm" text="#" className="large soft-blue" />
+      <app-headline level="h3-sm" [text]="invoice.id" className="large" />
+    </div>
+    <app-text variant="span" [text]="invoice.clientName" className="large slate-blue" />
+  </div>
+  <div class="invoice__card-body">
+    <div class="invoice__card-details">
+      <app-text variant="span" [text]="'Due ' + (invoice.paymentDue | date:'d MMM yyyy')" className="large muted-blue" />
+      <app-headline level="h3" [text]="(invoice.total | currency:'GBP':'symbol-narrow':'1.2-2')!.replace('£', '£ ')" />
+    </div>
+    <app-badge [variant]="getBadgeVariant(invoice.status)">
+      <ng-container>{{invoice.status}}</ng-container>
+    </app-badge>
+  </div>
+</a>
+
+<a [routerLink]="'invoice/' + invoice.id" class="invoice__card-container small__screen large__screen">
+  <div class="invoice__header-id-container">
+    <app-headline level="h3-sm" text="#" className="large soft-blue" />
+    <app-headline level="h3-sm" [text]="invoice.id" className="large" />
+  </div>
+
+  <app-text variant="span" [text]="'Due ' + (invoice.paymentDue | date:'d MMM yyyy')" className="large muted-blue" />
+
+  <app-text variant="span" [text]="invoice.clientName" className="large slate-blue" />
+
+  <app-headline level="h3" [text]="(invoice.total | currency:'GBP':'symbol-narrow':'1.2-2')!.replace('£', '£ ')" />
+  <div class="invoice__card-details-controls">
+    <app-badge [variant]="getBadgeVariant(invoice.status)">
+      <ng-container>{{invoice.status}}</ng-container>
+    </app-badge>
+    <app-icon name="icon-arrow-right"></app-icon>
+  </div>
+</a>

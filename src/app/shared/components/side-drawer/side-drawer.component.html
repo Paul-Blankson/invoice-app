@@ -1,0 +1,22 @@
+<div
+  class="side-drawer__container"
+  [class.side-drawer__container--open]="isDrawerOpen"
+>
+  <div class="side-drawer__overlay"></div>
+  <div class="side-drawer__content">
+    <div class="side-drawer__header">
+      <button class="side-drawer__back-button" (click)="onClose()">
+        <app-icon name="icon-arrow-left" class="side-drawer__back-icon" />
+        <app-headline level="h3-sm" text="Go back" />
+      </button>
+      <app-headline level="h1" [text]="title" class="side-drawer__title" />
+    </div>
+    <div
+      class="side-drawer__body"
+      appClickOutside
+      (clickOutside)="onClickOutside()"
+    >
+      <ng-content></ng-content>
+    </div>
+  </div>
+</div>

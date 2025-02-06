@@ -14,22 +14,53 @@
   --color-deep-gray: #252945;
   --color-light-gray: #dfe3fa;
   --color-muted-blue: #888eb0;
+  --color-slate-blue: #858BB2;
   --color-soft-blue: #7e88c3;
   --color-very-dark: #0c0e16;
   --color-steel-gray: #373B53;
+  --color-grayish-blue: #494E6E;
   --color-almost-white: #f8f8fb;
   --color-midnight-gray: #141625;
   --white-color: #ffffff;
+  --color-pale-blue-white: #F9FAFE;
 }
 
 [data-theme="light"] {
   --background-color: var(--color-almost-white);
-  --text-color: var(--color-very-dark);
+  --headline-text-color: var(--color-very-dark);
+  --primary-text-color: var(--color-soft-blue);
+  --secondary-text-color: var(--color-muted-blue);
+  --card-bg-color: var(--white-color);
+  --items-bg-color: var(--color-pale-blue-white);
+  --items-hover-bg-color: var(--color-light-gray);
+  --filter-bg-color: var(--white-color);
+  --checkbox-bg-color: var(--color-light-gray);
+  --drop-shadow: 0px 10px 20px 0px #48549F40;
+  --grand-total-bg-color: var(--color-steel-gray);
+  --sidebar-bg-color: var(--color-steel-gray);
+  --draft-bg-color: rgba(55, 59, 83, 0.0571);
+  --draft-indicator-color: var(--color-steel-gray);
+  --side-drawer-bg-color: var(--white-color);
+  --overlay-bg-color: rgba(0, 0, 0, 0.5);
 }
 
 [data-theme="dark"] {
   --background-color: var(--color-midnight-gray);
-  --text-color: var(--color-light-gray);
+  --headline-text-color: var(--white-color);
+  --primary-text-color: var(--color-light-gray);
+  --secondary-text-color: var(--color-light-gray);
+  --card-bg-color: var(--color-dark-gray);
+  --items-bg-color: var(--color-deep-gray);
+  --items-hover-bg-color: var(--white-color);
+  --filter-bg-color: var(--color-deep-gray);
+  --checkbox-bg-color: var(--color-dark-gray);
+  --drop-shadow: 0px 10px 20px 0px #00000040;
+  --grand-total-bg-color: var(--color-very-dark);
+  --sidebar-bg-color: var(--color-dark-gray);
+  --draft-bg-color: rgb(223, 227, 250, 0.0571);
+  --draft-indicator-color: var(--color-light-gray);
+  --side-drawer-bg-color: var(--color-midnight-gray);
+  --overlay-bg-color: transparent;
 }
 
 @font-face {
@@ -46,5 +77,6 @@
 body {
   font-family: 'Spartan', sans-serif;
   background-color: var(--background-color);
-  color: var(--text-color);
+  color: var(--primary-text-color);
+  min-height: 100svh;
 }

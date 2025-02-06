@@ -1,0 +1,46 @@
+.dialog__container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding-inline: 1.5rem;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(1.2);
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+}
+
+:has(.dialog__overlay) .dialog__container {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.dialog__container:has(.dialog__overlay) {
+  opacity: 1;
+  visibility: visible;
+}
+
+.dialog__center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dialog__flex-start {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.dialog__overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  z-index: 1001;
+}

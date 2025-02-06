@@ -1,0 +1,102 @@
+
+.small__screen {
+  display: flex !important;
+}
+
+.large__screen {
+  display: none !important;
+}
+
+.invoice__card-container {
+  max-width: 100%;
+  height: 134px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 1.5rem;
+  border-radius: 8px;
+  background-color: var(--card-bg-color);
+  box-shadow: 0px 10px 10px -10px #48549F1A;
+  margin-bottom: 16px;
+  text-decoration: none;
+}
+
+.invoice__card-container:hover {
+  border: 1px solid var(--color-primary-blue);
+  cursor: pointer;
+}
+
+.invoice__header-text-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.invoice__header-id-container {
+  display: flex;
+  align-items: center;
+}
+
+.invoice__card-body {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+  .small__screen {
+    display: none !important;
+  }
+
+  .large__screen {
+    display: flex !important;
+    justify-content: space-between;
+  }
+
+  .invoice__card-container {
+    max-width: 100%;
+    height: 72px;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .invoice__card-text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 43px;
+  }
+
+  .invoice__card-details {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+  }
+
+  .invoice__card-details-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .small__screen {
+    display: none !important;
+  }
+
+  .large__screen {
+    display: flex !important;
+  }
+
+  .invoice__card-container {
+    max-width: 100%;
+    min-width: 730px;
+    height: 72px;
+    gap: 5rem;
+  }
+}

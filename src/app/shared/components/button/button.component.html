@@ -1,0 +1,8 @@
+<button [class]="buttonClass" [disabled]="isdisabled">
+  @if (btnVariant === 'btn1') {
+    <div class="btn1__icon-container">
+      <app-icon name="icon-plus"></app-icon>
+    </div>
+  }
+  <app-headline level="h3-sm" [className]="textColor || 'white-color'" [text]="getButtonText()" />
+</button>

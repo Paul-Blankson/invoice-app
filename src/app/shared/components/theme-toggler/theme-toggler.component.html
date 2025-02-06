@@ -1,0 +1,14 @@
+<button
+  class="theme-toggle"
+  (click)="onToggleTheme()"
+  [attr.aria-label]="
+    (isDark$ | async) ? 'Switch to light theme' : 'Switch to dark theme'
+  "
+>
+  <div class="theme-toggle__icon-wrapper" [class.is-dark]="isDark$ | async">
+    <app-icon
+      [name]="(isDark$ | async) ? 'icon-sun' : 'icon-moon'"
+      class="theme-toggle__icon"
+    />
+  </div>
+</button>
