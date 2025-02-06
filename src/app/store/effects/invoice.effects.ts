@@ -7,24 +7,21 @@ import { InvoiceActions } from '../actions/invoice.actions';
 
 @Injectable()
 export class InvoiceEffects {
-
-  private readonly actions$: Actions = inject(Actions);
-  private readonly dataService: DataService = inject(DataService);
+  private readonly actions$ = inject(Actions);
+  private readonly dataService = inject(DataService);
 
   loadInvoices$ = createEffect(() =>
     this.actions$.pipe(
       ofType(InvoiceActions.loadInvoices),
       mergeMap(() =>
         this.dataService.invoiceData.pipe(
-          map((invoices) =>
-            InvoiceActions.loadInvoicesSuccess({ invoices })
-          ),
+          map((invoices) => InvoiceActions.loadInvoicesSuccess({ invoices })),
           catchError((error) =>
-            of(InvoiceActions.loadInvoicesFailure({ error: error.message }))
-          )
-        )
-      )
-    )
+            of(InvoiceActions.loadInvoicesFailure({ error: error.message })),
+          ),
+        ),
+      ),
+    ),
   );
 
   loadInvoiceById$ = createEffect(() =>
@@ -39,11 +36,26 @@ export class InvoiceEffects {
             return InvoiceActions.loadInvoiceByIdSuccess({ invoice });
           }),
           catchError((error) =>
-            of(InvoiceActions.loadInvoiceByIdFailure({ error: error.message }))
-          )
-        )
-      )
-    )
+            of(InvoiceActions.loadInvoiceByIdFailure({ error: error.message })),
+          ),
+        ),
+      ),
+    ),
   );
 
+  editInvoice$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(InvoiceActions.editInvoice),
+      mergeMap(({ invoice }) =>
+        this.dataService.updateInvoice(invoice).pipe(
+          map((updatedInvoice) =>
+            InvoiceActions.editInvoiceSuccess({ invoice: updatedInvoice }),
+          ),
+          catchError((error) =>
+            of(InvoiceActions.editInvoiceFailure({ error: error.message })),
+          ),
+        ),
+      ),
+    ),
+  );
 }

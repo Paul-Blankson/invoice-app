@@ -50,4 +50,15 @@ export class InvoiceDetailsComponent implements OnInit {
     this.store.dispatch(InvoiceActions.loadInvoices());
     this.location.back();
   }
+
+  markAsPaid(invoice: Invoice): void {
+    if (invoice.status === 'pending') {
+      const updatedInvoice: Invoice = {
+        ...invoice,
+        status: 'paid'
+      };
+      this.store.dispatch(InvoiceActions.editInvoice({ invoice: updatedInvoice }));
+      this.store.dispatch(InvoiceActions.loadInvoiceById({ id: invoice.id }));
+    }
+  }
 }

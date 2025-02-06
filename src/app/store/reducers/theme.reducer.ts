@@ -1,7 +1,7 @@
 import { createFeature, createReducer, on } from '@ngrx/store';
 import { ThemeActions } from '../actions/theme.actions';
 import { ThemeState, initialThemeState } from '../../models/app.state';
-import { loadFromStorage, saveToStorage } from '../utils/theme.utils';
+import { loadFromStorage, saveToStorage } from '../utils/utils';
 
 const THEME_STORAGE_KEY = 'app_theme';
 
