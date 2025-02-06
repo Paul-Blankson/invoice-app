@@ -19,3 +19,4 @@ export interface FilterOption {
   title: string;
   value: string;
 }
+export type ButtonVariant = 'btn1' | 'btn2' | 'btn3' | 'btn4' | 'btn5' | 'btn6';
