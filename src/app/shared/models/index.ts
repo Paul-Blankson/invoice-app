@@ -22,3 +22,13 @@ export interface FilterOption {
 export type ButtonVariant = 'btn1' | 'btn2' | 'btn3' | 'btn4' | 'btn5' | 'btn6';
 export type TextFieldType = 'text' | 'email' | 'password' | 'number';
 export type ValidationError = 'required' | 'email' | null;
+export interface DropdownOption<T> {
+  label: string;
+  value: T;
+  disabled?: boolean;
+}
+
+export interface DropdownChanges<T> {
+  option: DropdownOption<T>;
+  value: T;
+}

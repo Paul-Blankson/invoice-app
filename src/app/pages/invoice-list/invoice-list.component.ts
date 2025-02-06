@@ -14,11 +14,12 @@ import {
   selectLoading,
 } from '../../store/reducers/invoice.reducer';
 import { InvoiceActions } from '../../store/actions/invoice.actions';
-import { BadgeVariant, FilterOption } from '../../shared/models';
+import { BadgeVariant, DropdownChanges, DropdownOption, FilterOption } from '../../shared/models';
 import { IconComponent } from '../../shared/components/icon/icon.component';
 import { AppState } from '../../models/app.state';
 import { SideDrawerComponent } from '../../shared/components/side-drawer/side-drawer.component';
 import { TextFieldComponent } from '../../shared/components/text-field/text-field.component';
+import { DropdownComponent } from '../../shared/components/dropdown/dropdown.component';
 
 @Component({
   selector: 'app-invoice-list',
@@ -32,7 +33,8 @@ import { TextFieldComponent } from '../../shared/components/text-field/text-fiel
     IconComponent,
     SideDrawerComponent,
     TextFieldComponent,
-  ],
+    DropdownComponent
+],
   templateUrl: './invoice-list.component.html',
   styleUrl: './invoice-list.component.css',
 })
@@ -88,5 +90,16 @@ export class InvoiceListComponent implements OnInit {
 
   onDrawerClose() {
     this.isSideDrawerOpen = false;
+  }
+
+  readonly paymentTermsOptions: DropdownOption<number>[] = [
+    { label: 'Net 1 Day', value: 1 },
+    { label: 'Net 7 Days', value: 7 },
+    { label: 'Net 14 Days', value: 14 },
+    { label: 'Net 30 Days', value: 30, },
+  ];
+
+  onPaymentTermsChange(event: DropdownChanges<number>): void {
+    console.log("Selected payment term ", event.option.label);
   }
 }

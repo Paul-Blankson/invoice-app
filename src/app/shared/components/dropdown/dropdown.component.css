@@ -1,0 +1,105 @@
+.dropdown {
+  position: relative;
+  width: 100%;
+}
+
+.dropdown__label {
+  display: block;
+  color: var(--primary-text-color);
+  font-size: 13px;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.dropdown__label .required {
+  color: var(--color-primary-red);
+  margin-left: 0.25rem;
+}
+
+.dropdown__toggle {
+  width: 100%;
+  height: 48px;
+  padding: 0 16px;
+  border: 1px solid var(--text-field-border-color);
+  border-radius: 4px;
+  background-color: transparent;
+  color: var(--headline-text-color);
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: border-color 0.2s ease;
+  font-weight: 700;
+}
+
+.dropdown__toggle:hover:not(:disabled) {
+  border-color: var(--dropdownhover-border-color);
+}
+
+.dropdown__toggle:disabled {
+  background-color: var(--color-pale-blue-white);
+  cursor: not-allowed;
+}
+
+.dropdown__toggle.error {
+  border-color: var(--color-primary-red);
+}
+
+.dropdown__toggle app-icon {
+  transition: transform 0.2s ease;
+}
+
+.dropdown__toggle app-icon.rotate {
+  transform: rotate(180deg);
+}
+
+.dropdown__menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  right: 0;
+  background-color: var(--dropdown-menu-color);
+  border-radius: 0.5rem;
+  box-shadow: var(--drop-shadow);
+  z-index: 10;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.dropdown__option {
+  padding: 16px;
+  padding-left: 24px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--select-option-text-color);
+  transition: color 0.2s ease;
+}
+
+.dropdown__option:not(:last-child) {
+  border-bottom: 1px solid var(--option-border-color);
+}
+
+.dropdown__option:hover:not(.disabled) {
+  color: var(--select-option-texthover-color);
+}
+
+.dropdown__option.selected {
+  color: var(--headline-text-color);
+}
+
+.dropdown__option.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.dropdown .error-message {
+  position: absolute;
+  left: 0;
+  bottom: -20px;
+  color: var(--color-primary-red);
+  font-size: 11px;
+  font-weight: 600;
+}

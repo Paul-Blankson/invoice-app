@@ -31,11 +31,12 @@
   --primary-text-color: var(--color-soft-blue);
   --secondary-text-color: var(--color-muted-blue);
   --card-bg-color: var(--white-color);
+  --dropdown-menu-color: var(var(--white-color));
   --items-bg-color: var(--color-pale-blue-white);
   --items-hover-bg-color: var(--color-light-gray);
   --filter-bg-color: var(--white-color);
   --checkbox-bg-color: var(--color-light-gray);
-  --drop-shadow: 0px 10px 20px 0px #48549F40;
+  --drop-shadow: 0 10px 20px 0 #48549F40;
   --grand-total-bg-color: var(--color-steel-gray);
   --sidebar-bg-color: var(--color-steel-gray);
   --draft-bg-color: rgba(55, 59, 83, 0.0571);
@@ -44,6 +45,10 @@
   --overlay-bg-color: rgba(0, 0, 0, 0.5);
   --text-field-border-color: var(--color-light-gray);
   --text-fieldhover-border-color: var(--color-secondary-blue);
+  --dropdownhover-border-color: var(--color-primary-blue);
+  --select-option-text-color: var(--color-very-dark);
+  --select-option-texthover-color: var(--color-primary-blue);
+  --option-border-color: var(--color-light-gray);
 }
 
 [data-theme="dark"] {
@@ -52,11 +57,12 @@
   --primary-text-color: var(--color-light-gray);
   --secondary-text-color: var(--color-light-gray);
   --card-bg-color: var(--color-dark-gray);
+  --dropdown-menu-color: var(--color-deep-gray);
   --items-bg-color: var(--color-deep-gray);
   --items-hover-bg-color: var(--white-color);
   --filter-bg-color: var(--color-deep-gray);
   --checkbox-bg-color: var(--color-dark-gray);
-  --drop-shadow: 0px 10px 20px 0px #00000040;
+  --drop-shadow: 0 10px 20px 0 #00000040;
   --grand-total-bg-color: var(--color-very-dark);
   --sidebar-bg-color: var(--color-dark-gray);
   --draft-bg-color: rgb(223, 227, 250, 0.0571);
@@ -65,6 +71,10 @@
   --overlay-bg-color: transparent;
   --text-field-border-color: var(--color-deep-gray);
   --text-fieldhover-border-color: var(--color-primary-blue);
+  --dropdownhover-border-color: var(--color-deep-gray);
+  --select-option-text-color: var(--color-light-gray);
+  --select-option-texthover-color: var(--color-secondary-blue);
+  --option-border-color: var(--color-dark-gray);
 }
 
 @font-face {
