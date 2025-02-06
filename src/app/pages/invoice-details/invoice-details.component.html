@@ -21,9 +21,35 @@
         <app-badge [variant]="invoiceDetail.status" />
       </div>
       <div class="invoice__details-btn-controls">
-        <app-button btnVariant="btn3" textColor="soft-blue" />
-        <app-button btnVariant="btn5" />
-        <app-button btnVariant="btn2" />
+        <app-button
+          btnVariant="btn3"
+          textColor="soft-blue"
+          (click)="toggleDrawer()"
+          (keydown)="
+            $event.key === 'Enter' || $event.key === ' ' ? toggleDrawer() : null
+          "
+        />
+        <app-button
+          btnVariant="btn5"
+          (click)="openDeleteDialog()"
+          (keydown)="
+            $event.key === 'Enter' || $event.key === ' '
+              ? openDeleteDialog()
+              : null
+          "
+        />
+        <app-button
+          btnVariant="btn2"
+          (click)="markAsPaid(invoiceDetail)"
+          (keydown)="
+            $event.key === 'Enter' || $event.key === ' '
+              ? markAsPaid(invoiceDetail)
+              : null
+          "
+          [isdisabled]="
+            invoiceDetail.status === 'draft' || invoiceDetail.status === 'paid'
+          "
+        />
       </div>
     </div>
 
@@ -184,7 +210,7 @@
           <app-text
             text="Grand Total"
             variant="span"
-            className="small white-color"
+            className="small white-text"
           />
           <app-headline
             [text]="
@@ -198,9 +224,51 @@
     </div>
   }
 </div>
+@if (invoice$ | async; as invoiceDetail) {
+  <div class="invoice__details-controls small__screen">
+    <app-button
+      btnVariant="btn3"
+      textColor="soft-blue"
+      (click)="toggleDrawer()"
+      (keydown)="
+        $event.key === 'Enter' || $event.key === ' ' ? toggleDrawer() : null
+      "
+    />
+    <app-button
+      btnVariant="btn5"
+      (click)="openDeleteDialog()"
+      (keydown)="
+        $event.key === 'Enter' || $event.key === ' ' ? openDeleteDialog() : null
+      "
+    />
+    <app-button
+      btnVariant="btn2"
+      (click)="markAsPaid(invoiceDetail)"
+      (keydown)="
+        $event.key === 'Enter' || $event.key === ' '
+          ? markAsPaid(invoiceDetail)
+          : null
+      "
+      [isdisabled]="
+        invoiceDetail.status === 'draft' || invoiceDetail.status === 'paid'
+      "
+    />
+  </div>
 
-<div class="invoice__details-controls small__screen">
-  <app-button btnVariant="btn3" textColor="soft-blue" />
-  <app-button btnVariant="btn5" />
-  <app-button btnVariant="btn2" />
-</div>
+  <app-dialog
+    [isOpen]="isDeleteDialogOpen"
+    className="dialog__center"
+    (overlayClick)="closeDeleteDialog()"
+  >
+    <app-delete-card
+      [invoiceId]="invoiceDetail.id"
+      buttonText="Cancel"
+      (onCancel)="closeDeleteDialog()"
+      (onConfirm)="handleDeleteInvoice(invoiceDetail)"
+    ></app-delete-card>
+  </app-dialog>
+
+  <app-side-drawer [isDrawerOpen]="isSideDrawerOpen" (close)="onDrawerClose()">
+    <p>Input fields will be here in Lab 2.</p>
+  </app-side-drawer>
+}

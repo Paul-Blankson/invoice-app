@@ -18,7 +18,7 @@ import { HeadingLevel } from '../../models';
         font-family: 'Spartan', sans-serif;
         font-weight: 700;
         margin: 0;
-        color: var(--color-very-dark);
+        color: var(--headline-text-color);
       }
       .h1 {
         font-size: 2rem;
@@ -62,7 +62,7 @@ import { HeadingLevel } from '../../models';
          color: var(--color-mint-green);
       }
       .draft {
-        color: var(--color-steel-gray);
+        color: var(--draft-indicator-color);
       }
 
     `,

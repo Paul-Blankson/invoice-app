@@ -1,0 +1,10 @@
+@if (isOpen) {
+  <div class="dialog__container {{ className }}">
+    <div
+      class="dialog__overlay"
+      (click)="onOverlayClick($event)"
+      (keydown)="onKeyDown($event)"
+    ></div>
+    <ng-content></ng-content>
+  </div>
+}
