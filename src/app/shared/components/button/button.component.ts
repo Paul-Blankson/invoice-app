@@ -11,12 +11,17 @@ import { HeadlineComponent } from "../headline/headline.component";
 })
 export class ButtonComponent {
   @Input() btnVariant: ButtonVariant = 'btn1';
+  @Input() text: string = '';
 
   get buttonClass(): string {
     return this.btnVariant;
   }
 
   getButtonText(): string {
+    if (this.text) {
+      return this.text;
+    }
+
     const textMap = {
       'btn1': 'New Invoice',
       'btn2': 'Mark as Paid',
