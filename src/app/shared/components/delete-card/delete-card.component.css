@@ -2,7 +2,7 @@
   width: 90%;
   margin-left: 5%;
   padding: 2rem;
-  background-color: var(--white-color);
+  background-color: var(--card-bg-color);
   border-radius: 0.5rem;
   position: relative;
   z-index: 1002;

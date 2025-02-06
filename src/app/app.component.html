@@ -1,10 +1,10 @@
-<div class="layout">
+<div class="layout" [attr.data-theme]="theme$ | async">
   <header class="layout__sidebar">
     <div class="sidebar__logo-container">
       <app-icon name="logo" />
     </div>
     <div class="sidebar__controls-container">
-      <app-icon name="icon-moon" />
+      <app-theme-toggler />
       <hr class="sidebar__controls-separator" />
       <app-icon name="image-avatar" />
     </div>

@@ -5,7 +5,7 @@
 
 .layout__sidebar {
   width: 100%;
-  background-color: var(--color-steel-gray);
+  background-color: var(--sidebar-bg-color);
   display: flex;
   align-items: center;
   justify-content: space-between;
