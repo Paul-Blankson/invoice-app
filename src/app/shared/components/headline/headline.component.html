@@ -1,0 +1,14 @@
+@switch (level) {
+  @case ('h1') {
+    <h1><ng-content select="[h1]"></ng-content></h1>
+  }
+  @case ('h2') {
+    <h2><ng-content select="[h2]"></ng-content></h2>
+  }
+  @case ('h3') {
+    <h3 [class]="variant"><ng-content select="[h3]"></ng-content></h3>
+  }
+  @default {
+    <h3 [class]="variant"><ng-content select="[h3]"></ng-content></h3>
+  }
+}
