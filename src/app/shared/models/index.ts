@@ -4,6 +4,7 @@ export type IconName =
   | 'icon-sun'
   | 'icon-moon'
   | 'icon-arrow-down'
+  | 'icon-arrow-up'
   | 'icon-arrow-left'
   | 'icon-arrow-right'
   | 'icon-calendar'
@@ -14,3 +15,7 @@ export type IconName =
   | 'image-avatar'
   | 'logo';
 export type BadgeVariant = 'pending' | 'paid' | 'draft';
+export interface FilterOption {
+  title: string;
+  value: string;
+}
